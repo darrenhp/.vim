@@ -1,0 +1,222 @@
+
+
+
+"========================函数==========================“
+function! MySys()
+  if has("win32")
+    return "windows"
+  else
+    return "linux"
+  endif
+endfunction
+
+function! SwitchToBuf(filename)
+    "let fullfn = substitute(a:filename, "^\\~/", $HOME . "/", "")
+    " find in current tab
+    let bufwinnr = bufwinnr(a:filename)
+    if bufwinnr != -1
+        exec bufwinnr . "wincmd w"
+        return
+    else
+        " find in each tab
+        tabfirst
+        let tab = 1
+        while tab <= tabpagenr("$")
+            let bufwinnr = bufwinnr(a:filename)
+            if bufwinnr != -1
+                exec "normal " . tab . "gt"
+                exec bufwinnr . "wincmd w"
+                return
+            endif
+            tabnext
+            let tab = tab + 1
+        endwhile
+        " not exist, new tab
+        exec "tabnew " . a:filename
+    endif
+endfunction
+"===========================END函数=======================：=“
+"Fast edit vimrc
+if MySys() == 'linux'
+    "Fast reloading of the .vimrc
+    map <silent> <leader>ss :source ~/.vimrc<cr>
+    "Fast editing of .vimrc
+    map <silent> <leader>ee :call SwitchToBuf("~/.vimrc")<cr>
+    "When .vimrc is edited, reload it
+    autocmd! bufwritepost .vimrc source ~/.vimrc
+elseif MySys() == 'windows'
+    set helplang=cn
+endif
+
+" For windows version
+if MySys() == 'windows'
+    source $VIMRUNTIME/mswin.vim
+    behave mswin
+endif 
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                      为方便编辑vimrc设置部分                                 "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"设置默认的mapleader为逗号
+    "let mapleader=","
+    "let g:mapleader="," "Set mapleader变量
+
+"设置快速编辑.vimrc文件 ,e 编辑.vimrc
+
+"保存.vimrc文件后会自动调用新的.vimrc
+"    autocmd! bufwritepost .vimrc source ~/.vimrc
+
+
+"==============================================================================="
+"==============================================================================="
+syn on                      "语法支持
+
+"common conf {{             通用配置
+set ai                      "自动缩进
+set bs=2                    "在insert模式下用退格键删除
+set showmatch               "代码匹配
+set laststatus=2            "总是显示状态行
+set expandtab               "以下三个配置配合使用，设置tab和缩进空格数
+set shiftwidth=4
+set tabstop=4
+set cursorline              "为光标所在行加下划线
+set number                  "显示行号
+set autoread                "文件在Vim之外修改过，自动重新读入
+
+set ignorecase              "检索时忽略大小写
+set fileencodings=uft-8,gbk "使用utf-8或gbk打开文件
+set hls                     "检索时高亮显示匹配项
+set helplang=cn             "帮助系统设置为中文
+"set foldmethod=syntax       "代码折叠
+"}}
+
+"conf for tabs, 为标签页进行的配置，通过ctrl h/l切换标签等
+let mapleader = ','
+nnoremap <C-l> gt
+nnoremap <C-h> gT
+nnoremap <leader>t : tabe<CR>
+
+"conf for plugins {{ 插件相关的配置
+"状态栏的配置 
+"powerline{
+set guifont=PowerlineSymbols\ for\ Powerline
+set nocompatible
+set t_Co=256
+let g:Powerline_symbols = 'fancy'
+"}
+"pathogen是Vim用来管理插件的插件
+"pathogen{
+"call pathogen#infect()
+"}
+
+"}}
+
+let g:EasyMotion_leader_key = '<Leader>'
+"colorscheme koehler
+
+map <F11> <Esc>:call libcallnr("gvimfullscreen.dll", "ToggleFullScreen", 0)<CR>
+
+"==============================================================================="
+"==============================================================================="
+"map <silent> <leader>v :call SwitchToBuf("$VIM\\_vimrc")<cr>
+"========Solarized====="
+syntax enable
+"set background=light
+set background=dark
+"colorscheme solarized
+if has('gui_running')
+    set background=light
+else
+    set background=dark
+endif
+"call togglebg#map("<F5>")
+"========Solarized====="
+
+
+
+"=========From Watashi =======
+set fileencodings=utf-8,ucs-bom,gb18030,shift-jis,big5,euc-jp,euc-kr
+set fileformats=unix
+set fileformat=unix
+set number autoindent tabstop=2 shiftwidth=2 expandtab smarttab
+" set ruler ttyfast
+"colorscheme ron
+
+autocmd FileType c,cpp set cindent cinoptions=:0g0t0(sus
+
+if has("gui_running")
+"  set lines=40 columns=111
+set lines=32 columns=100
+colo desert
+"  set guifont=Bitstream\ Vera\ Sans\ Mono\ 10
+set guioptions-=T
+set nomousehide
+endif
+
+highlight WhitespaceEOL ctermbg=red guibg=red
+match WhitespaceEOL /\s\+$/
+
+" au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
+
+map <F5> :call CompileAndRun()<CR>
+
+map <F9> :!~/poj_submit.py % <CR>
+
+function DictGet(dict, key, default)
+  if has_key(a:dict, a:key)
+    let value = a:dict[a:key]
+  else
+    let value = a:default
+  endif
+  return substitute(value, '\s%.\b\s', "'\\0'", 'g')
+endfunction
+
+function CompileAndRun()
+  let compileDict = {
+        \ 'c':            'gcc -O2 -Wall -Wextra -lm -D__WATASHI__ %',
+        \ 'cpp':          'g++ -std=c++0x -O2 -Wall -Wextra -D__WATASHI__ %',
+        \ 'cpp.doxygen':  'g++ -std=c++0x -O2 -Wall -Wextra -D__WATASHI__ %',
+        \ 'cs':           'gmcs %',
+        \ 'java':         'javac -Xlint %',
+        \ 'pascal':       'fpc %',
+        \ 'fortran':      'gfortran %',
+        \ 'tex':          'xelatex %',
+        \ }
+  let compile = DictGet(compileDict, &filetype, 'true')
+
+  let runDict = {
+        \ 'c':            './a.out',
+        \ 'cpp':          './a.out',
+        \ 'cpp.doxygen':  './a.out',
+        \ 'cs':           'mono %<.exe',
+        \ 'java':         'java -D__WATASHI__ %<',
+        \ 'pascal':       './%<',
+        \ 'fortran':      './a.out',
+        \ 'tex':          'evince %<.pdf',
+        \
+        \ 'haskell':      'ghci %',
+        \ 'lhaskell':     'ghci %',
+        \ 'sh':           'bash %',
+        \ 'lisp':         'clisp -i %',
+        \ 'python':       'python2 %',
+        \ 'tcl':          'perl %',
+        \ 'javascript':   'node %',
+        \
+        \ 'perl':         'perl %',
+        \ 'php':          'php %',
+        \ 'ruby':         'ruby %',
+        \ 'scala':        'scala %',
+        \ }
+  let run = DictGet(runDict, &filetype, 'false')
+
+  let compileAndRun =
+        \ compile . ' && echo __compiled__ && ' .
+        \ run . ' ; echo __done__ \[$?\] && wait && read -n 1'
+
+  execute 'w'
+"  execute  '!' . compileAndRun  
+  execute '!xterm -fn "10*20" -geometry 80x32 -e "' . compileAndRun . '"'
+endfunction
+
+
