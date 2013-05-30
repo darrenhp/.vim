@@ -12,17 +12,42 @@
  "
  
  " original repos on github
-
- " 1. on vim-script account"
-Bundle "colorschemer"
-Bundle "vimwiki"
-Bundle "visualMarks.vim"
+ 
+ """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+ " 1. on vim-script account""""""""""""""""""""""""""""""""""""""""
+ """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Bundle 'colorschemer'
+Bundle 'vimwiki'
+Bundle 'visualMarks.vim'
 "Bundle 'FuzzyFinder'
 
-" 2. on other account" 
+" 相较于Command-T等查找文件的插件，ctrlp.vim最大的好处在于没有依赖
+Bundle 'ctrlp.vim'
+
+" Bundle 'zencoding.vim'
+
+" 在()、""、甚至HTML标签之间快速跳转；
+Bundle 'matchit.zip'
+
+Bundle 'EasyMotion'
+
+"Bundle 'FencView'
+
+Bundle 'The-NERD-tree'
+
+Bundle 'mru.vim'
+
+" 让代码更加易于纵向排版，以=或,符号对齐
+Bundle 'Tabular'
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 2. on other account""""""""""""""""""""""""""""""""""""""""""""""" 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Bundle "tpope/vim-markdown"
 Bundle "Lokaltog/vim-powerline"
-Bundle "Lokaltog/vim-easymotion"
+"Bundle "Lokaltog/vim-easymotion"
 Bundle "Lokaltog/TagHighlight"
 
  " vim-scripts repos
