@@ -115,7 +115,6 @@ let g:Powerline_symbols = 'fancy'
 let g:EasyMotion_leader_key = '<Leader>'
 "colorscheme koehler
 
-map <F11> <Esc>:call libcallnr("gvimfullscreen.dll", "ToggleFullScreen", 0)<CR>
 
 "==============================================================================="
 "==============================================================================="
@@ -162,6 +161,8 @@ match WhitespaceEOL /\s\+$/
 map <F5> :call CompileAndRun()<CR>
 
 map <F9> :!~/poj_submit.py % <CR>
+map <F10> :!~/bl_submit.py % <CR>
+map <F11> :!~/uva_submit.py % <CR>
 
 function DictGet(dict, key, default)
   if has_key(a:dict, a:key)
@@ -175,7 +176,7 @@ endfunction
 function CompileAndRun()
   let compileDict = {
         \ 'c':            'gcc -O2 -Wall -Wextra -lm -D__WATASHI__ %',
-        \ 'cpp':          'g++ -std=c++0x -O2 -Wall -Wextra -D__WATASHI__ %',
+        \ 'cpp':          'g++ -std=c++0x -g -Wshadow -Werror -Wall -Wextra -D__WATASHI__ %',
         \ 'cpp.doxygen':  'g++ -std=c++0x -O2 -Wall -Wextra -D__WATASHI__ %',
         \ 'cs':           'gmcs %',
         \ 'java':         'javac -Xlint %',
@@ -215,8 +216,8 @@ function CompileAndRun()
         \ run . ' ; echo __done__ \[$?\] && wait && read -n 1'
 
   execute 'w'
-"  execute  '!' . compileAndRun  
-  execute '!xterm -fn "10*20" -geometry 80x32 -e "' . compileAndRun . '"'
+  execute  '!' . compileAndRun  
+"  execute '!xterm -fn "10*20" -geometry 80x32 -e "' . compileAndRun . '"'
 endfunction
 
 
