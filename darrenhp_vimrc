@@ -160,9 +160,9 @@ match WhitespaceEOL /\s\+$/
 
 map <F5> :call CompileAndRun()<CR>
 
-map <F9> :!~/poj_submit.py % <CR>
-map <F10> :!~/bl_submit.py % <CR>
-map <F11> :!~/uva_submit.py % <CR>
+map <F9> :!~/tookit/poj_submit.py % <CR>
+map <F10> :!~/tookit/bl_submit.py % <CR>
+map <F11> :!ruby /root/usta/judge/submit.rb % <CR>
 
 function DictGet(dict, key, default)
   if has_key(a:dict, a:key)
