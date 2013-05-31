@@ -49,7 +49,7 @@ Bundle "tpope/vim-markdown"
 Bundle "Lokaltog/vim-powerline"
 "Bundle "Lokaltog/vim-easymotion"
 Bundle "Lokaltog/TagHighlight"
-
+Bundle "altercation/vim-colors-solarized"
  " vim-scripts repos
 
  " non github repos
