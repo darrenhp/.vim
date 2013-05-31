@@ -3,7 +3,7 @@ vundle
 
 my-vim-config based on vundle
 
-- 下载配置    : `git clone https://github.com/darrenhp/vundle.git`
+- 下载配置    : `git clone https://github.com/darrenhp/vundle.git ~/.vim`
 - 链接配置文件: `ln ~/.vim/vimrc ~/.vimrc`
 
 - 安装Vundle：`git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle`
