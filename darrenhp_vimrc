@@ -41,7 +41,7 @@ if MySys() == 'linux'
     "Fast reloading of the .vimrc
     map <silent> <leader>ss :source ~/.vimrc<cr>
     "Fast editing of .vimrc
-    map <silent> <leader>ee :call SwitchToBuf("~/.vimrc")<cr>
+    map <silent> <leader>vv :call SwitchToBuf("~/.vimrc")<cr>
     "When .vimrc is edited, reload it
     autocmd! bufwritepost .vimrc source ~/.vimrc
 elseif MySys() == 'windows'
@@ -160,9 +160,9 @@ match WhitespaceEOL /\s\+$/
 
 map <F5> :call CompileAndRun()<CR>
 
-map <F9> :!~/tookit/poj_submit.py % <CR>
-map <F10> :!~/tookit/bl_submit.py % <CR>
-map <F11> :!ruby /root/usta/judge/submit.rb % <CR>
+map <F9> :!~/toolkit/poj_submit.py % <CR>
+map <F10> :!~/toolkit/bl_submit.py % <CR>
+map <F11> :!ruby ~/toolkit/usta/judge/submit.rb % <CR>
 
 function DictGet(dict, key, default)
   if has_key(a:dict, a:key)
@@ -219,5 +219,7 @@ function CompileAndRun()
   execute  '!' . compileAndRun  
 "  execute '!xterm -fn "10*20" -geometry 80x32 -e "' . compileAndRun . '"'
 endfunction
+
+set makeprg=g++\ -std=c++0x\ -g\ -Wshadow\ -Werror\ -Wall\ -Wextra\ -D__WATASHI__\ %  
 
 
