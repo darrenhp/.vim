@@ -1,6 +1,6 @@
 
 
-
+autocmd! BufNewFile * silent! 0r ~/.vim/templates/template.%:e
 "========================函数==========================“
 function! MySys()
   if has("win32")
@@ -84,7 +84,7 @@ set cursorline              "为光标所在行加下划线
 set number                  "显示行号
 set autoread                "文件在Vim之外修改过，自动重新读入
 
-set ignorecase              "检索时忽略大小写
+set noignorecase              "检索时不忽略大小写
 set fileencodings=uft-8,gbk "使用utf-8或gbk打开文件
 set hls                     "检索时高亮显示匹配项
 set helplang=cn             "帮助系统设置为中文
@@ -176,7 +176,9 @@ endfunction
 function CompileAndRun()
   let compileDict = {
         \ 'c':            'gcc -O2 -Wall -Wextra -lm -D__WATASHI__ %',
-        \ 'cpp':          'g++ -std=c++0x -g -Wshadow -Werror -Wall -Wextra -D__WATASHI__ %',
+        \ 'cc':          'g++ -std=c++11 -g -Weffc++ -Wshadow -Werror -Wall -Wextra -D__WATASHI__ %',
+        \ 'cxx':          'g++ -std=c++11 -g -Weffc++ -Wshadow -Werror -Wall -Wextra -D__WATASHI__ %',
+        \ 'cpp':          'g++ -std=c++11 -g -Weffc++ -Wshadow -Werror -Wall -Wextra -D__WATASHI__ %',
         \ 'cpp.doxygen':  'g++ -std=c++0x -O2 -Wall -Wextra -D__WATASHI__ %',
         \ 'cs':           'gmcs %',
         \ 'java':         'javac -Xlint %',
@@ -188,6 +190,8 @@ function CompileAndRun()
 
   let runDict = {
         \ 'c':            './a.out',
+        \ 'cc':          './a.out',
+        \ 'cxx':          './a.out',
         \ 'cpp':          './a.out',
         \ 'cpp.doxygen':  './a.out',
         \ 'cs':           'mono %<.exe',
@@ -216,10 +220,11 @@ function CompileAndRun()
         \ run . ' ; echo __done__ \[$?\] && wait && read -n 1'
 
   execute 'w'
+  execute 'set makeprg=' . substitute(compile, "\ ", "\\ ", "")   
   execute  '!' . compileAndRun  
 "  execute '!xterm -fn "10*20" -geometry 80x32 -e "' . compileAndRun . '"'
 endfunction
 
-set makeprg=g++\ -std=c++0x\ -g\ -Wshadow\ -Werror\ -Wall\ -Wextra\ -D__WATASHI__\ %  
+
 
 

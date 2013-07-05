@@ -19,6 +19,7 @@
 Bundle 'colorschemer'
 Bundle 'vimwiki'
 Bundle 'visualMarks.vim'
+Bundle 'The-NERD-Commenter'
 "Bundle 'FuzzyFinder'
 
 " 相较于Command-T等查找文件的插件，ctrlp.vim最大的好处在于没有依赖
