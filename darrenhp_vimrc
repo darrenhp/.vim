@@ -124,7 +124,8 @@ syntax enable
 "set background=light
 "set background=dark
 "colorscheme solarized
-colorscheme default
+"colorscheme default
+colorscheme sorcerer
 if has('gui_running')
     set background=light
 else
