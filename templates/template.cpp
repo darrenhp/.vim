@@ -73,7 +73,19 @@
 #include<utility>
 #include<valarray>
 using namespace std;
+
+typedef long long i64;
+typedef unsigned long long u64;
 /*
  * __builtin_ffs  __builtin_clz  __builtin_ctz __builtin_popcount  __builtin_parity
- * sizeof
+ * sizeof CLOCKS_PER_SEC
+ * (1 << (31 - __builtin_clz(100) ) == 64;
+ * decltype // deprecated
  */
+
+
+int TestNum;
+int main(){
+
+
+}

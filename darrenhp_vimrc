@@ -122,8 +122,9 @@ let g:EasyMotion_leader_key = '<Leader>'
 "========Solarized====="
 syntax enable
 "set background=light
-set background=dark
-colorscheme solarized
+"set background=dark
+"colorscheme solarized
+colorscheme default
 if has('gui_running')
     set background=light
 else
@@ -160,8 +161,8 @@ match WhitespaceEOL /\s\+$/
 
 map <F5> :call CompileAndRun()<CR>
 
-map <F9> :!~/toolkit/poj_submit.py % <CR>
-map <F10> :!~/toolkit/bl_submit.py % <CR>
+map <F9> :!~/toolkit/submit/sb.py % <CR>
+"map <F10> :!~/toolkit/bl_submit.py % <CR>
 map <F11> :!ruby ~/toolkit/usta/judge/submit.rb % <CR>
 
 function DictGet(dict, key, default)

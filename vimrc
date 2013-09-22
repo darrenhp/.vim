@@ -22,12 +22,12 @@ Bundle 'visualMarks.vim'
 Bundle 'The-NERD-Commenter'
 Bundle 'vim-cpp-enhanced-highlight'
 Bundle 'cppSyntaxCheck'
-
+Bundle 'vimside'
 "Bundle 'snipMate'
 "Bundle 'FuzzyFinder'
 
 " 相较于Command-T等查找文件的插件，ctrlp.vim最大的好处在于没有依赖
-Bundle 'ctrlp.vim'
+"Bundle 'ctrlp.vim'
 
 " Bundle 'zencoding.vim'
 
@@ -41,17 +41,21 @@ Bundle 'EasyMotion'
 Bundle 'The-NERD-tree'
 
 Bundle 'mru.vim'
-
+Bundle 'YankRing.vim'
 " 让代码更加易于纵向排版，以=或,符号对齐
 Bundle 'Tabular'
 
-
+Bundle 'VimClojure'
+Bundle 'gitignore.vim'
+Bundle 'Superior-Haskell-Interaction-Mode-SHIM'
+Bundle 'neocomplcache'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 2. on other account""""""""""""""""""""""""""""""""""""""""""""""" 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Bundle "tpope/vim-markdown"
-Bundle "Lokaltog/vim-powerline"
+"Bundle "Lokaltog/vim-powerline"
+Bundle "bling/vim-airline"
 Bundle "Lokaltog/vim-easymotion"
 Bundle "Lokaltog/TagHighlight"
 Bundle "altercation/vim-colors-solarized"
@@ -59,10 +63,12 @@ Bundle "MarcWeber/vim-addon-mw-utils"
 Bundle "tomtom/tlib_vim"
 Bundle "honza/vim-snippets"
 Bundle "garbas/vim-snipmate"
+Bundle "kien/ctrlp.vim"
  " vim-scripts repos
 
  " non github repos
  Bundle 'git://git.wincent.com/command-t.git'
+ Bundle 'https://bitbucket.org/ns9tks/vim-l9/'
  " ...
 
  filetype plugin indent on     " required!
