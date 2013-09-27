@@ -86,6 +86,6 @@ typedef unsigned long long u64;
 
 int TestNum;
 int main(){
-
+  ios_base::sync_with_stdio(false); 
 
 }

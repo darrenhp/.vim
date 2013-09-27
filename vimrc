@@ -49,14 +49,15 @@ Bundle 'VimClojure'
 Bundle 'gitignore.vim'
 Bundle 'Superior-Haskell-Interaction-Mode-SHIM'
 Bundle 'neocomplcache'
-
+Bundle 'sketch.vim'
+Bundle 'EasyMotion'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 2. on other account""""""""""""""""""""""""""""""""""""""""""""""" 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Bundle "tpope/vim-markdown"
 "Bundle "Lokaltog/vim-powerline"
 Bundle "bling/vim-airline"
-Bundle "Lokaltog/vim-easymotion"
+"Bundle "Lokaltog/vim-easymotion"
 Bundle "Lokaltog/TagHighlight"
 Bundle "altercation/vim-colors-solarized"
 Bundle "MarcWeber/vim-addon-mw-utils"
