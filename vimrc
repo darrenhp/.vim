@@ -65,6 +65,7 @@ Bundle "tomtom/tlib_vim"
 Bundle "honza/vim-snippets"
 Bundle "garbas/vim-snipmate"
 Bundle "kien/ctrlp.vim"
+Bundle "xuhdev/SingleCompile"
  " vim-scripts repos
 
  " non github repos
@@ -83,4 +84,5 @@ Bundle "kien/ctrlp.vim"
  " see :h vundle for more details or wiki for FAQ
  " NOTE: comments after Bundle command are not allowed..
 
-source ~/.vim/darrenhp_vimrc
+
+ source ~/.vim/darrenhp_vimrc

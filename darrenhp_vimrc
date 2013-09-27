@@ -35,25 +35,10 @@ function! SwitchToBuf(filename)
         exec "tabnew " . a:filename
     endif
 endfunction
+
 "===========================END函数=======================：=“
-"Fast edit vimrc
-if MySys() == 'linux'
-    "Fast reloading of the .vimrc
-    map <silent> <leader>ss :source ~/.vimrc<cr>
-    "Fast editing of .vimrc
-    map <silent> <leader>vv :call SwitchToBuf("~/.vimrc")<cr>
-    "When .vimrc is edited, reload it
-    autocmd! bufwritepost .vimrc source ~/.vimrc
-elseif MySys() == 'windows'
-    set helplang=cn
-endif
 
-" For windows version
-if MySys() == 'windows'
-    source $VIMRUNTIME/mswin.vim
-    behave mswin
-endif 
-
+let mapleader = ","
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                      为方便编辑vimrc设置部分                                 "
@@ -61,11 +46,14 @@ endif
 "设置默认的mapleader为逗号
     "let mapleader=","
     "let g:mapleader="," "Set mapleader变量
-
+"
 "设置快速编辑.vimrc文件 ,e 编辑.vimrc
-
+nmap <leader>vv :tabedit $MYVIMRC<CR> 
+nmap <leader>dd :tabedit $HOME/.vim/darrenhp_vimrc<CR> 
+"
 "保存.vimrc文件后会自动调用新的.vimrc
-"    autocmd! bufwritepost .vimrc source ~/.vimrc
+autocmd bufwritepost .vimrc source $MYVIMRC 
+autocmd bufwritepost darrenhp_vimrc source $MYVIMRC
 
 
 "==============================================================================="
@@ -92,7 +80,6 @@ set helplang=cn             "帮助系统设置为中文
 "}}
 
 "conf for tabs, 为标签页进行的配置，通过ctrl h/l切换标签等
-let mapleader = ','
 nnoremap <C-l> gt
 nnoremap <C-h> gT
 nnoremap <leader>t : tabe<CR>
@@ -118,7 +105,6 @@ let g:EasyMotion_leader_key = '<Leader>'
 
 "==============================================================================="
 "==============================================================================="
-"map <silent> <leader>v :call SwitchToBuf("$VIM\\_vimrc")<cr>
 "========Solarized====="
 syntax enable
 "set background=light
@@ -142,14 +128,13 @@ set fileformats=unix
 set fileformat=unix
 set number autoindent tabstop=2 shiftwidth=2 expandtab smarttab
 " set ruler ttyfast
-"colorscheme ron
 
 autocmd FileType c,cpp set cindent cinoptions=:0g0t0(sus
 
 if has("gui_running")
 "  set lines=40 columns=111
 set lines=32 columns=100
-colo desert
+"colo desert
 "  set guifont=Bitstream\ Vera\ Sans\ Mono\ 10
 set guioptions-=T
 set nomousehide
@@ -160,11 +145,14 @@ match WhitespaceEOL /\s\+$/
 
 " au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
 
-map <F5> :call CompileAndRun()<CR>
 
-map <F9> :!~/toolkit/submit/sb.py % <CR>
+"==============Just Form ACM============
+map <F5> :call CompileAndRun()<CR>
+nmap <F9> :SCCompile<cr>
+nmap <F10> :SCCompileRun<cr>
 "map <F10> :!~/toolkit/bl_submit.py % <CR>
 map <F11> :!ruby ~/toolkit/usta/judge/submit.rb % <CR>
+map <F12> :!~/toolkit/submit/sb.py % <CR>
 
 function DictGet(dict, key, default)
   if has_key(a:dict, a:key)
