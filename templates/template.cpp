@@ -76,6 +76,7 @@ using namespace std;
 
 typedef long long i64;
 typedef unsigned long long u64;
+const double PI = acos(-1);
 /*
  * __builtin_ffs  __builtin_clz  __builtin_ctz __builtin_popcount  __builtin_parity
  * sizeof CLOCKS_PER_SEC
