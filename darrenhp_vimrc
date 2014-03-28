@@ -147,6 +147,7 @@ match WhitespaceEOL /\s\+$/
 
 
 "==============Just Form ACM============
+let g:compile_flag = "-std=c++11 -g -Weffc++ -Wshadow -Werror -Wall -Wextra"
 map <F5> :call CompileAndRun()<CR>
 nmap <F9> :SCCompile<cr>
 nmap <F10> :SCCompileRun<cr>
@@ -167,7 +168,7 @@ function CompileAndRun()
   let compileDict = {
         \ 'c':            'gcc -O2 -Wall -Wextra -lm -D__WATASHI__ %',
         \ 'cc':          'g++ -std=c++11 -g -Weffc++ -Wshadow -Werror -Wall -Wextra -D__WATASHI__ %',
-        \ 'cxx':          'g++ -std=c++11 -g -Weffc++ -Wshadow -Werror -Wall -Wextra -D__WATASHI__ %',
+        \ 'cxx':          'clang++ -std=c++11 -pthread -g -Weffc++ -Wshadow -Werror -Wall -Wextra -D__WATASHI__  %',
         \ 'cpp':          'g++ -std=c++11 -g -Weffc++ -Wshadow -Werror -Wall -Wextra -D__WATASHI__ %',
         \ 'cpp.doxygen':  'g++ -std=c++0x -O2 -Wall -Wextra -D__WATASHI__ %',
         \ 'cs':           'gmcs %',

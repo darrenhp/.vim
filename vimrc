@@ -51,6 +51,7 @@ Bundle 'Superior-Haskell-Interaction-Mode-SHIM'
 Bundle 'neocomplcache'
 Bundle 'sketch.vim'
 Bundle 'EasyMotion'
+Bundle 'Superior-Haskell-Interaction-Mode-SHIM'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 2. on other account""""""""""""""""""""""""""""""""""""""""""""""" 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
