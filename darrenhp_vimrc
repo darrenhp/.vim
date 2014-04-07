@@ -52,8 +52,8 @@ nmap <leader>vv :tabedit $MYVIMRC<CR>
 nmap <leader>dd :tabedit $HOME/.vim/darrenhp_vimrc<CR> 
 "
 "保存.vimrc文件后会自动调用新的.vimrc
-autocmd bufwritepost .vimrc source $MYVIMRC 
-autocmd bufwritepost darrenhp_vimrc source $MYVIMRC
+"autocmd bufwritepost .vimrc source $MYVIMRC 
+"autocmd bufwritepost darrenhp_vimrc source $MYVIMRC
 
 
 "==============================================================================="
@@ -71,6 +71,7 @@ set tabstop=4
 set cursorline              "为光标所在行加下划线
 set number                  "显示行号
 set autoread                "文件在Vim之外修改过，自动重新读入
+set smarttab
 
 set noignorecase              "检索时不忽略大小写
 set fileencodings=uft-8,gbk "使用utf-8或gbk打开文件
@@ -106,27 +107,21 @@ let g:EasyMotion_leader_key = '<Leader>'
 "==============================================================================="
 "==============================================================================="
 "========Solarized====="
-syntax enable
-"set background=light
+
 "set background=dark
-"colorscheme solarized
 "colorscheme default
-colorscheme sorcerer
-if has('gui_running')
-    set background=light
-else
-    set background=dark
-endif
+colorscheme obsidian
+"colorscheme solarized
 "call togglebg#map("<F5>")
 "========Solarized====="
 
 
 
 "=========From Watashi =======
-set fileencodings=utf-8,ucs-bom,gb18030,shift-jis,big5,euc-jp,euc-kr
-set fileformats=unix
-set fileformat=unix
-set number autoindent tabstop=2 shiftwidth=2 expandtab smarttab
+"set fileencodings=utf-8,ucs-bom,gb18030,shift-jis,big5,euc-jp,euc-kr
+"set fileformats=unix
+"set fileformat=unix
+"set number autoindent tabstop=4 shiftwidth=4 expandtab smarttab
 " set ruler ttyfast
 
 autocmd FileType c,cpp set cindent cinoptions=:0g0t0(sus
@@ -146,14 +141,13 @@ match WhitespaceEOL /\s\+$/
 " au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
 
 
-"==============Just Form ACM============
+"==============Just For ACM============
 let g:compile_flag = "-std=c++11 -g -Weffc++ -Wshadow -Werror -Wall -Wextra"
 map <F5> :call CompileAndRun()<CR>
 nmap <F9> :SCCompile<cr>
 nmap <F10> :SCCompileRun<cr>
-"map <F10> :!~/toolkit/bl_submit.py % <CR>
 map <F11> :!ruby ~/toolkit/usta/judge/submit.rb % <CR>
-map <F12> :!~/toolkit/submit/sb.py % <CR>
+map <F12> :!~/toolkit/sb.py % <CR>
 
 function DictGet(dict, key, default)
   if has_key(a:dict, a:key)

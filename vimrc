@@ -24,6 +24,7 @@ Bundle 'vim-cpp-enhanced-highlight'
 Bundle 'cppSyntaxCheck'
 Bundle 'vimside'
 "Bundle 'snipMate'
+Bundle 'sketch.vim'
 "Bundle 'FuzzyFinder'
 
 " 相较于Command-T等查找文件的插件，ctrlp.vim最大的好处在于没有依赖
