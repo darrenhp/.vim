@@ -31,13 +31,13 @@ Bundle 'sketch.vim'
 "Bundle 'ctrlp.vim'
 
 " Bundle 'zencoding.vim'
-
+Bundle 'vim-misc'
 " 在()、""、甚至HTML标签之间快速跳转；
 Bundle 'matchit.zip'
 
 Bundle 'EasyMotion'
 
-"Bundle 'FencView'
+Bundle 'FencView'
 
 Bundle 'The-NERD-tree'
 
@@ -50,9 +50,14 @@ Bundle 'VimClojure'
 Bundle 'gitignore.vim'
 Bundle 'Superior-Haskell-Interaction-Mode-SHIM'
 Bundle 'neocomplcache'
-Bundle 'sketch.vim'
-Bundle 'EasyMotion'
-Bundle 'Superior-Haskell-Interaction-Mode-SHIM'
+"Bundle 'EasyMotion'
+
+Bundle 'taglist.vim'
+"Bundle 'vim-colorscheme-switcher'
+Bundle 'easytags.vim'
+Bundle 'STL-Syntax'
+Bundle 'Trinity'
+Bundle 'AutoFenc'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 2. on other account""""""""""""""""""""""""""""""""""""""""""""""" 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -68,6 +73,8 @@ Bundle "honza/vim-snippets"
 Bundle "garbas/vim-snipmate"
 Bundle "kien/ctrlp.vim"
 Bundle "xuhdev/SingleCompile"
+Bundle "wesleyche/SrcExpl"
+"
  " vim-scripts repos
 
  " non github repos
