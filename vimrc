@@ -161,7 +161,9 @@ Bundle "tpope/vim-rsi"
 Bundle "tpope/vim-sensible"
 
 Bundle "bling/vim-airline"
-
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
 
 Bundle "altercation/vim-colors-solarized"
 Bundle "MarcWeber/vim-addon-mw-utils"
@@ -170,7 +172,8 @@ Bundle "honza/vim-snippets"
 Bundle "garbas/vim-snipmate"
 Bundle "kien/ctrlp.vim"
 Bundle "xuhdev/SingleCompile"
-
+let g:compile_flag = "-std=c++11 -g -Weffc++ -Wshadow -Werror -Wall -Wextra"
+autocmd Filetype cpp nmap <buffer> <F5> :SCCompileRun -std=c++11 -g -Weffc++ -Wshadow -Werror -Wall -Wextra<CR>
 
  " vim-scripts repos
 

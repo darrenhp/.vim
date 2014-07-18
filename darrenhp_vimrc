@@ -1,7 +1,7 @@
 
 
 autocmd! BufNewFile * silent! 0r ~/.vim/templates/template.%:e
-"========================º¯Êı==========================¡°
+"========================å‡½æ•°==========================â€œ
 function! MySys()
   if has("win32")
     return "windows"
@@ -36,57 +36,55 @@ function! SwitchToBuf(filename)
     endif
 endfunction
 
-"===========================ENDº¯Êı=======================£º=¡°
+"===========================ENDå‡½æ•°=======================ï¼š=â€œ
 
 let mapleader = ","
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                      Îª·½±ã±à¼­vimrcÉèÖÃ²¿·Ö                                 "
+"                      ä¸ºæ–¹ä¾¿ç¼–è¾‘vimrcè®¾ç½®éƒ¨åˆ†                                 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"ÉèÖÃÄ¬ÈÏµÄmapleaderÎª¶ººÅ
-    "let mapleader=","
-    "let g:mapleader="," "Set mapleader±äÁ¿
-"
-"ÉèÖÃ¿ìËÙ±à¼­.vimrcÎÄ¼ş ,e ±à¼­.vimrc
+"è®¾ç½®å¿«é€Ÿç¼–è¾‘.vimrcæ–‡ä»¶ ,e ç¼–è¾‘.vimrc
 nmap <leader>vv :tabedit $MYVIMRC<CR> 
 nmap <leader>dd :tabedit $HOME/.vim/darrenhp_vimrc<CR> 
 "
-"±£´æ.vimrcÎÄ¼şºó»á×Ô¶¯µ÷ÓÃĞÂµÄ.vimrc
-"autocmd bufwritepost .vimrc source $MYVIMRC 
-"autocmd bufwritepost darrenhp_vimrc source $MYVIMRC
-
+"ä¿å­˜.vimrcæ–‡ä»¶åä¼šè‡ªåŠ¨è°ƒç”¨æ–°çš„.vimrc
+autocmd bufwritepost .vimrc source $MYVIMRC 
+autocmd bufwritepost darrenhp_vimrc source $MYVIMRC
 
 "==============================================================================="
 "==============================================================================="
-syntax on                      "Óï·¨Ö§³Ö
-set autoindent   " ×Ô¶¯Ëõ½ø
-set backspace=2  " ÔÚinsertÄ£Ê½ÏÂÓÃÍË¸ñ¼üÉ¾³ı
-set showmatch    " ´úÂëÆ¥Åä
-set laststatus=2 " ×ÜÊÇÏÔÊ¾×´Ì¬ĞĞ
-set expandtab    " ÒÔÏÂÈı¸öÅäÖÃÅäºÏÊ¹ÓÃ£¬ÉèÖÃtabºÍËõ½ø¿Õ¸ñÊı
+syntax on                      "è¯­æ³•æ”¯æŒ
+set autoindent   " è‡ªåŠ¨ç¼©è¿›
+set backspace=2  " åœ¨insertæ¨¡å¼ä¸‹ç”¨é€€æ ¼é”®åˆ é™¤
+set showmatch    " ä»£ç åŒ¹é…
+set laststatus=2 " æ€»æ˜¯æ˜¾ç¤ºçŠ¶æ€è¡Œ
+set expandtab    " ä»¥ä¸‹ä¸‰ä¸ªé…ç½®é…åˆä½¿ç”¨ï¼Œè®¾ç½®tabå’Œç¼©è¿›ç©ºæ ¼æ•°
 set shiftwidth=2
 set tabstop=2
-set cursorline              "Îª¹â±êËùÔÚĞĞ¼ÓÏÂ»®Ïß
-set number                  "ÏÔÊ¾ĞĞºÅ
-set autoread                "ÎÄ¼şÔÚVimÖ®ÍâĞŞ¸Ä¹ı£¬×Ô¶¯ÖØĞÂ¶ÁÈë
+set cursorline              "ä¸ºå…‰æ ‡æ‰€åœ¨è¡ŒåŠ ä¸‹åˆ’çº¿
+set number                  "æ˜¾ç¤ºè¡Œå·
+set autoread                "æ–‡ä»¶åœ¨Vimä¹‹å¤–ä¿®æ”¹è¿‡ï¼Œè‡ªåŠ¨é‡æ–°è¯»å…¥
 set smarttab
 
-set noignorecase              "¼ìË÷Ê±²»ºöÂÔ´óĞ¡Ğ´
-set fileencodings=uft-8,gbk "Ê¹ÓÃutf-8»ògbk´ò¿ªÎÄ¼ş
-set hlsearch                     "¼ìË÷Ê±¸ßÁÁÏÔÊ¾Æ¥ÅäÏî
-set helplang=cn             "°ïÖúÏµÍ³ÉèÖÃÎªÖĞÎÄ
-"set foldmethod=syntax       "´úÂëÕÛµş
+set noignorecase              "æ£€ç´¢æ—¶ä¸å¿½ç•¥å¤§å°å†™
+set fileencodings=uft-8,gbk "ä½¿ç”¨utf-8æˆ–gbkæ‰“å¼€æ–‡ä»¶
+set hlsearch                     "æ£€ç´¢æ—¶é«˜äº®æ˜¾ç¤ºåŒ¹é…é¡¹
+set helplang=cn             "å¸®åŠ©ç³»ç»Ÿè®¾ç½®ä¸ºä¸­æ–‡
+"set foldmethod=syntax       "ä»£ç æŠ˜å 
 "}}
 
-"conf for tabs, Îª±êÇ©Ò³½øĞĞµÄÅäÖÃ£¬Í¨¹ıctrl h/lÇĞ»»±êÇ©µÈ
+"conf for tabs, ä¸ºæ ‡ç­¾é¡µè¿›è¡Œçš„é…ç½®ï¼Œé€šè¿‡ctrl h/låˆ‡æ¢æ ‡ç­¾ç­‰
 nnoremap <C-l> gt
 nnoremap <C-h> gT
 "nnoremap <leader>t : tabe<CR>
 
-set guifont=PowerlineSymbols\ for\ Powerline
+"python from powerline.vim import setup as powerline_setup
+"python powerline_setup()
+"python del powerline_setup
+"set guifont=PowerlineSymbols\ for\ Powerline
 set nocompatible
 set t_Co=256
-let g:Powerline_symbols = 'fancy'
+"let g:Powerline_symbols = 'fancy'
 
 "let g:EasyMotion_leader_key = '<Leader>'
 
@@ -125,78 +123,12 @@ endif
 highlight WhitespaceEOL ctermbg=red guibg=red
 match WhitespaceEOL /\s\+$/
 
-" au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
-
-
-"==============Just For ACM============
-let g:compile_flag = "-std=c++11 -g -Weffc++ -Wshadow -Werror -Wall -Wextra"
-
-function DictGet(dict, key, default)
-  if has_key(a:dict, a:key)
-    let value = a:dict[a:key]
-  else
-    let value = a:default
-  endif
-  return substitute(value, '\s%.\b\s', "'\\0'", 'g')
-endfunction
-
-function CompileAndRun()
-  let compileDict = {
-        \ 'c':            'gcc -O2 -Wall -Wextra -lm -D__WATASHI__ %',
-        \ 'cc':          'g++ -std=c++11 -g -Weffc++ -Wshadow -Werror -Wall -Wextra -D__WATASHI__ %',
-        \ 'cxx':          'clang++ -std=c++11 -pthread -g -Weffc++ -Wshadow -Werror -Wall -Wextra -D__WATASHI__  %',
-        \ 'cpp':          'g++ -std=c++11 -g -Weffc++ -Wshadow -Werror -Wall -Wextra -D__WATASHI__ %',
-        \ 'cpp.doxygen':  'g++ -std=c++0x -O2 -Wall -Wextra -D__WATASHI__ %',
-        \ 'cs':           'gmcs %',
-        \ 'java':         'javac -Xlint %',
-        \ 'pascal':       'fpc %',
-        \ 'fortran':      'gfortran %',
-        \ 'tex':          'xelatex %',
-        \ }
-  let compile = DictGet(compileDict, &filetype, 'true')
-
-  let runDict = {
-        \ 'c':            './a.out',
-        \ 'cc':          './a.out',
-        \ 'cxx':          './a.out',
-        \ 'cpp':          './a.out',
-        \ 'cpp.doxygen':  './a.out',
-        \ 'cs':           'mono %<.exe',
-        \ 'java':         'java -D__WATASHI__ %<',
-        \ 'pascal':       './%<',
-        \ 'fortran':      './a.out',
-        \ 'tex':          'evince %<.pdf',
-        \
-        \ 'haskell':      'ghci %',
-        \ 'lhaskell':     'ghci %',
-        \ 'sh':           'bash %',
-        \ 'lisp':         'clisp -i %',
-        \ 'python':       'python2 %',
-        \ 'tcl':          'perl %',
-        \ 'javascript':   'node %',
-        \
-        \ 'perl':         'perl %',
-        \ 'php':          'php %',
-        \ 'ruby':         'ruby %',
-        \ 'scala':        'scala %',
-        \ }
-  let run = DictGet(runDict, &filetype, 'false')
-
-  let compileAndRun =
-        \ compile . ' && echo __compiled__ && ' .
-        \ run . ' ; echo __done__ \[$?\] && wait && read -n 1'
-
-  execute 'w'
-  execute 'set makeprg=' . substitute(compile, "\ ", "\\ ", "")   
-  execute  '!' . compileAndRun  
-"  execute '!xterm -fn "10*20" -geometry 80x32 -e "' . compileAndRun . '"'
-endfunction
 
 autocmd FileType py,python set tabstop=4
 autocmd FileType py,python set shiftwidth=4
 
-map <F5> :call CompileAndRun()<CR>
-map <F2> <esc>:!cpplint %<cr>
+"map <F5> :call CompileAndRun()<CR>
+"map <F2> <esc>:!cpplint %<cr>
 "nmap <F9> :SCCompile<cr>
 "nmap <F10> :SCCompileRun<cr>
 "map <F11> :!ruby ~/toolkit/usta/judge/submit.rb % <CR>
