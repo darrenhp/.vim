@@ -77,6 +77,10 @@ Bundle 'taglist.vim'
 Bundle 'sketch.vim'
 "Bundle 'FuzzyFinder'
 
+"https://github.com/vim-scripts/DrawIt
+" \di to start DrawIt and
+" \ds to stop  DrawIt.
+Bundle 'DrawIt'
 " 相较于Command-T等查找文件的插件，ctrlp.vim最大的好处在于没有依赖
 "Bundle 'ctrlp.vim'
 
@@ -161,10 +165,10 @@ map  n <Plug>(easymotion-next)
 map  N <Plug>(easymotion-prev)
 " JK motions: Line motions
 " Gif config
-map <Leader>l <Plug>(easymotion-lineforward)
+"map <Leader>l <Plug>(easymotion-lineforward)
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
-map <Leader>h <Plug>(easymotion-linebackward)
+"map <Leader>h <Plug>(easymotion-linebackward)
 
 let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion
 "Bundle "Lokaltog/TagHighlight"
@@ -191,7 +195,6 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 Bundle "altercation/vim-colors-solarized"
 Bundle "MarcWeber/vim-addon-mw-utils"
 Bundle "tomtom/tlib_vim"
-Bundle "honza/vim-snippets"
 Bundle "garbas/vim-snipmate"
 Bundle "kien/ctrlp.vim"
 Bundle "xuhdev/SingleCompile"
@@ -255,6 +258,31 @@ nmap <F10> :TrinityToggleTagList<CR>
 
 " Open and close the NERD Tree separately 
 nmap <F11> :TrinityToggleNERDTree<CR> 
+
+Bundle 'SirVer/ultisnips'
+
+
+Bundle 'Valloric/ListToggle'
+let g:lt_location_list_toggle_map = '<leader>l'
+let g:lt_quickfix_list_toggle_map = '<leader>q'
+let g:lt_height = 10
+Bundle 'scrooloose/syntastic'
+Bundle "honza/vim-snippets"
+Bundle 'Valloric/YouCompleteMe'
+
+" Track the engine.
+"Plugin 'SirVer/ultisnips'
+" Snippets are separated from the engine. Add this if you want them:
+"Plugin 'honza/vim-snippets'
+
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
 
  " vim-scripts repos
 
