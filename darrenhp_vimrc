@@ -58,14 +58,12 @@ nmap <leader>dd :tabedit $HOME/.vim/darrenhp_vimrc<CR>
 
 "==============================================================================="
 "==============================================================================="
-syn on                      "语法支持
-
-"common conf {{             通用配置
-set ai                      "自动缩进
-set bs=2                    "在insert模式下用退格键删除
-set showmatch               "代码匹配
-set laststatus=2            "总是显示状态行
-set expandtab               "以下三个配置配合使用，设置tab和缩进空格数
+syntax on                      "语法支持
+set autoindent   " 自动缩进
+set backspace=2  " 在insert模式下用退格键删除
+set showmatch    " 代码匹配
+set laststatus=2 " 总是显示状态行
+set expandtab    " 以下三个配置配合使用，设置tab和缩进空格数
 set shiftwidth=2
 set tabstop=2
 set cursorline              "为光标所在行加下划线
@@ -75,7 +73,7 @@ set smarttab
 
 set noignorecase              "检索时不忽略大小写
 set fileencodings=uft-8,gbk "使用utf-8或gbk打开文件
-set hls                     "检索时高亮显示匹配项
+set hlsearch                     "检索时高亮显示匹配项
 set helplang=cn             "帮助系统设置为中文
 "set foldmethod=syntax       "代码折叠
 "}}
@@ -83,25 +81,14 @@ set helplang=cn             "帮助系统设置为中文
 "conf for tabs, 为标签页进行的配置，通过ctrl h/l切换标签等
 nnoremap <C-l> gt
 nnoremap <C-h> gT
-nnoremap <leader>t : tabe<CR>
+"nnoremap <leader>t : tabe<CR>
 
-"conf for plugins {{ 插件相关的配置
-"状态栏的配置 
-"powerline{
 set guifont=PowerlineSymbols\ for\ Powerline
 set nocompatible
 set t_Co=256
 let g:Powerline_symbols = 'fancy'
-"}
-"pathogen是Vim用来管理插件的插件
-"pathogen{
-"call pathogen#infect()
-"}
 
-"}}
-
-let g:EasyMotion_leader_key = '<Leader>'
-"colorscheme koehler
+"let g:EasyMotion_leader_key = '<Leader>'
 
 
 "==============================================================================="
@@ -218,6 +205,11 @@ map <F2> <esc>:!cpplint %<cr>
 " Open and close all the three plugins on the same time 
 "nmap <F8>   :TrinityToggleAll<CR> 
 
+
+
+
+
+
 " " Open and close the srcexpl.vim separately 
 nmap <F9>   :TrinityToggleSourceExplorer<CR> 
 
@@ -271,4 +263,4 @@ let g:SrcExpl_prevDefKey = "<F3>"
 " // Set "<F4>" key for displaying the next definition in the jump list 
 let g:SrcExpl_nextDefKey = "<F4>" 
 
-
+set fileencoding=utf-8
