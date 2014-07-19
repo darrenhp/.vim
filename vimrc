@@ -141,6 +141,7 @@ Bundle 'vimwiki'
 "use the F8 and Shift-F8 keys to switch to the next/previous color scheme and
 "Control-F8 to switch to a random color scheme.
 Bundle 'xolox/vim-misc'
+Bundle 'xolox/vim-shell'
 Bundle 'xolox/vim-colorscheme-switcher'
 Bundle 'xolox/vim-easytags'
 Bundle 'xolox/vim-notes'
