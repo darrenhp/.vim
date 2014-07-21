@@ -1,21 +1,22 @@
- set nocompatible               " be iMproved
- filetype off                   " required!
+set nocompatible               " be iMproved
+filetype off                   " required!
+let mapleader=','
 
- set rtp+=~/.vim/bundle/vundle/
- call vundle#rc()
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
 
- " let Vundle manage Vundle
- " required! 
- Bundle 'gmarik/vundle'
+" let Vundle manage Vundle
+" required! 
+Bundle 'gmarik/vundle'
 
- " My Bundles here:
- "
- 
- " original repos on github
- 
- """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
- " 1. on vim-script account""""""""""""""""""""""""""""""""""""""""
- """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" My Bundles here:
+"
+
+" original repos on github
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 1. on vim-script account""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "一堆ColorScheme的合集
 Bundle 'colorschemer'
 
@@ -46,25 +47,24 @@ Bundle 'The-NERD-Commenter'
 " 让代码更加易于纵向排版，以=或,符号对齐,  :Tab /<字符或单词>
 Bundle 'Tabular'
 "貌似没有效果。。
-let mapleader=','
 if exists(":Tabularize")
-    nmap <Leader>a= :Tabularize /=<CR>
-    vmap <Leader>a= :Tabularize /=<CR>
-    nmap <Leader>a: :Tabularize /:\zs<CR>
-    vmap <Leader>a: :Tabularize /:\zs<CR>
+  nmap <Leader>a= :Tabularize /=<CR>
+  vmap <Leader>a= :Tabularize /=<CR>
+  nmap <Leader>a: :Tabularize /:\zs<CR>
+  vmap <Leader>a: :Tabularize /:\zs<CR>
 endif
 
 inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
 
 function! s:align()
-    let p = '^\s*|\s.*\s|\s*$'
-    if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
-        let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
-        let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
-        Tabularize/|/l1
-        normal! 0
-        call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
-    endif
+  let p = '^\s*|\s.*\s|\s*$'
+  if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
+    let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
+    let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
+    Tabularize/|/l1
+    normal! 0
+    call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
+  endif
 endfunction
 
 
@@ -107,12 +107,12 @@ Bundle 'DoxygenToolkit.vim'
 
 "Bundle 'mopp/nyaruline.vim'
 "function! g:nyaruline_after_init_hook(controler)
-  "let g:vimfiler_force_overwrite_statusline = 0
-  "call a:controler.default.n.add_atom(-1,
-  "'%{exists("g:loaded_vimfiler")?vimfiler#get_status_string():""}',
-  "'NYARU_VIMF_N', a:controler.get_highlight_param('164a84', 'c1d8ac',
-  "'NONE'), 'left')
-  "echo a:controler.default.n.get_statusline_expr()
+"let g:vimfiler_force_overwrite_statusline = 0
+"call a:controler.default.n.add_atom(-1,
+"'%{exists("g:loaded_vimfiler")?vimfiler#get_status_string():""}',
+"'NYARU_VIMF_N', a:controler.get_highlight_param('164a84', 'c1d8ac',
+"'NONE'), 'left')
+"echo a:controler.default.n.get_statusline_expr()
 "endfunction
 ""a color schemer
 "Bundle 'mopp/mopkai.vim'
@@ -121,9 +121,6 @@ Bundle 'DoxygenToolkit.vim'
 Bundle 'gitignore.vim'
 
 Bundle 'neocomplcache'
-
-
-
 
 Bundle 'vimwiki'
 
@@ -222,9 +219,9 @@ let g:SrcExpl_gobackKey = "<SPACE>"
 " // except itself are using buffers. And you need add their buffer names into
 " // below listaccording to the command ":buffers!"
 let g:SrcExpl_pluginList = [ 
-        \ "__Tag_List__", 
-        \ "_NERD_tree_" 
-    \ ] 
+      \ "__Tag_List__", 
+      \ "_NERD_tree_" 
+      \ ] 
 
 " // Enable/Disable the local definition searching, and note that this is not 
 " // guaranteed to work, the Source Explorer doesn't check the syntax for now. 
@@ -285,23 +282,23 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsEditSplit="vertical"
 
 
- " vim-scripts repos
+" vim-scripts repos
 
- " non github repos
+" non github repos
 "Bundle 'git://git.wincent.com/command-t.git'
 "Bundle 'https://bitbucket.org/ns9tks/vim-l9/'
- " ...
+" ...
 
- filetype plugin indent on     " required!
- "
- " Brief help
- " :BundleList          - list configured bundles
- " :BundleInstall(!)    - install(update) bundles
- " :BundleSearch(!) foo - search(or refresh cache first) for foo
- " :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
- "
- " see :h vundle for more details or wiki for FAQ
- " NOTE: comments after Bundle command are not allowed..
+filetype plugin indent on     " required!
+"
+" Brief help
+" :BundleList          - list configured bundles
+" :BundleInstall(!)    - install(update) bundles
+" :BundleSearch(!) foo - search(or refresh cache first) for foo
+" :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
+"
+" see :h vundle for more details or wiki for FAQ
+" NOTE: comments after Bundle command are not allowed..
 
 
- source ~/.vim/darrenhp_vimrc
+source ~/.vim/darrenhp_vimrc
