@@ -1,4 +1,4 @@
-set nocompatible               " be iMproved
+﻿set nocompatible               " be iMproved
 filetype off                   " required!
 let mapleader=','
 
@@ -19,7 +19,8 @@ Bundle 'gmarik/vundle'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "一堆ColorScheme的合集
 Bundle 'colorschemer'
-
+Bundle 'xoria256.vim'
+Bundle 'xoria256m'
 
 
 " 在行号列的左边，显示mark的位置
@@ -70,6 +71,8 @@ endfunction
 
 
 " Todo------
+"Neec configure
+"Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'vim-cpp-enhanced-highlight'
 Bundle 'taglist.vim'
 
@@ -122,7 +125,8 @@ Bundle 'gitignore.vim'
 
 Bundle 'neocomplcache'
 
-Bundle 'vimwiki'
+Bundle 'vimwiki/vimwiki'
+Bundle 'vimwiki/utils'
 
 "Other IDE
 " 在()、""、甚至HTML标签之间快速跳转；
@@ -170,8 +174,9 @@ map <Leader>k <Plug>(easymotion-k)
 
 let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion
 "Bundle "Lokaltog/TagHighlight"
-Bundle "Lokaltog/vim-powerline"
+
 Bundle "Lokaltog/vim-distinguished"
+Bundle "Lokaltog/vim-powerline"
 
 Bundle "tpope/vim-repeat"
 Bundle "tpope/vim-markdown"
@@ -189,6 +194,7 @@ Bundle "bling/vim-airline"
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
+
 
 Bundle "altercation/vim-colors-solarized"
 Bundle "MarcWeber/vim-addon-mw-utils"
