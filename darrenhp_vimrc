@@ -56,28 +56,91 @@ set backspace=2              " 在insert模式下用退格键删除
 set showmatch                " 代码匹配
 set laststatus=2             " 总是显示状态行
 set expandtab                " 以下三个配置配合使用，设置tab和缩进空格数
+set smarttab
 set shiftwidth=2             "123
 set tabstop=2                "123
 set cursorline               " 为光标所在行加下划线
 set number                   " 显示行号
 set autoread                 " 文件在Vim之外修改过，自动重新读入
-set smarttab                 "
 set noignorecase             " 检索时不忽略大小写
-set fileencoding=uft-8      " 使用utf-8或gbk打开文件
+"set fileencoding=uft-8      " 使用utf-8或gbk打开文件
+set fileencodings=ucs-bom,utf-8,gb18030,shift-jis,big5,euc-jp,euc-kr
+set fileformats=unix
+set fileformat=unix
 set hlsearch                 " 检索时高亮显示匹配项
 set helplang=cn              " 帮助系统设置为中文
 
-"conf for tabs, 为标签页进行的配置，通过ctrl h/l切换标签等
-nnoremap <C-l> gt
-nnoremap <C-h> gT
-"nnoremap <leader>t : tabe<CR>
-
-
-
 "==============================================================================="
+autocmd BufEnter *.phpt set ft=php
+autocmd BufEnter *.php syntax sync fromstart
+autocmd BufEnter *.py set ts=4 sw=4
+" au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
+autocmd BufEnter *.hsc set ft=haskell
+autocmd BufEnter *.hs highlight link hsFunction Identifier
+
+map <F5> :call CompileAndRun()<CR>
+
+function DictGet(dict, key, default)
+  if has_key(a:dict, a:key)
+    let value = a:dict[a:key]
+  else
+    let value = a:default
+  endif
+  return substitute(value, '\s%.\b\s', "'\\0'", 'g')
+endfunction
+
+function CompileAndRun()
+  let compileDict = {
+        \ 'c':            'gcc -std=c1x -lm %',
+        \ 'cpp':          'g++ -std=c++11 -g -Weffc++ -Wshadow -Werror -Wall -Wextra %',
+        \ 'cpp.doxygen':  'g++ -std=c++0x %',
+        \ 'cs':           'dmcs -define:__WATASHI__ -r:System.Numerics -langversion:Future %',
+        \ 'd':            'dmd %',
+        \ 'java':         'javac -Xlint %',
+        \ 'pascal':       'fpc -d__WATASHI__ -So -XS %',
+        \ 'fortran':      'gfortran %',
+        \ 'tex':          'xelatex %',
+        \ }
+  let compile = DictGet(compileDict, &filetype, 'true')
+
+  let runDict = {
+        \ 'c':            './a.out',
+        \ 'cpp':          './a.out',
+        \ 'cpp.doxygen':  './a.out',
+        \ 'cs':           'mono %<.exe',
+        \ 'd':            './%<',
+        \ 'java':         'java -D__WATASHI__ %<',
+        \ 'pascal':       './%<',
+        \ 'fortran':      './a.out',
+        \ 'tex':          'evince %<.pdf',
+        \
+        \ 'go':           'go run %',
+        \ 'haskell':      'ulimit -t 60 && ghci -Wall %',
+        \ 'lhaskell':     'ghci -Wall %',
+        \ 'sh':           'bash %',
+        \ 'lisp':         'clisp -i %',
+        \ 'python':       'python2 %',
+        \ 'tcl':          'perl %',
+        \ 'javascript':   'node %',
+        \ 'scheme':       'guile %',
+        \
+        \ 'perl':         'perl %',
+        \ 'php':          'php %',
+        \ 'ruby':         'ruby %',
+        \ 'scala':        'scala %',
+        \ 'ocaml':        'ocaml %',
+        \ }
+  let run = DictGet(runDict, &filetype, 'false')
+
+  let compileAndRun =
+        \ compile . ' && echo __compiled__ && ' .
+        \ run . ' ; echo __done__  && wait && read -n 1'
+
+  execute 'w'
+  execute '!' . compileAndRun
+  "execute '!xterm -fn "10*20" -geometry 80x32 -e "' . compileAndRun . '"'
+endfunction
 "==============================================================================="
-set t_Co=256
-colorscheme obsidian
 
 
 if has("gui_running")
@@ -88,8 +151,6 @@ if has("gui_running")
   set guioptions-=T
   set nomousehide
 endif
-
-
 
 highlight WhitespaceEOL ctermbg=red guibg=red
 match WhitespaceEOL /\s\+$/
