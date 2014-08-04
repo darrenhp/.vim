@@ -110,7 +110,7 @@ let g:colorscheme_switcher_define_mappings=0
 Bundle 'xolox/vim-notes'
 
 " 快速查找
-Bundle "Lokaltog/vim-easymotion"
+Bundle 'Lokaltog/vim-easymotion'
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
 " Bi-directional find motion
 " Jump to anywhere you want with minimal keystrokes, with just one key binding.
@@ -135,33 +135,33 @@ map <Leader>k <Plug>(easymotion-k)
 "map <Leader>h <Plug>(easymotion-linebackward)
 let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion
 
-Bundle "Lokaltog/vim-distinguished"
-Bundle "Lokaltog/vim-powerline"
+Bundle 'Lokaltog/vim-distinguished'
+Bundle 'Lokaltog/vim-powerline'
 
-Bundle "tpope/vim-repeat"
-Bundle "tpope/vim-markdown"
-Bundle "tpope/vim-fugitive"
-Bundle "tpope/vim-flatfoot"
-Bundle "tpope/vim-vividchalk"
-"Bundle "tpope/vim-fireplace" " Clojure REPL
-Bundle "tpope/vim-sleuth"
-Bundle "tpope/vim-abolish"
-Bundle "tpope/vim-speeddating"
-Bundle "tpope/vim-rsi"
-Bundle "tpope/vim-sensible"
+Bundle 'tpope/vim-repeat'
+Bundle 'tpope/vim-markdown'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-flatfoot'
+Bundle 'tpope/vim-vividchalk'
+"Bundle 'tpope/vim-fireplace' " Clojure REPL
+Bundle 'tpope/vim-sleuth'
+Bundle 'tpope/vim-abolish'
+Bundle 'tpope/vim-speeddating'
+Bundle 'tpope/vim-rsi'
+Bundle 'tpope/vim-sensible'
 
-Bundle "bling/vim-airline"
+Bundle 'bling/vim-airline'
 let g:airline#extensions#tabline#enabled = 1
 "let g:airline#extensions#tabline#left_sep = ' '
 "let g:airline#extensions#tabline#left_alt_sep = '|'
 
 
-Bundle "MarcWeber/vim-addon-mw-utils"
-Bundle "tomtom/tlib_vim"
-Bundle "garbas/vim-snipmate"
-Bundle "kien/ctrlp.vim"
+Bundle 'MarcWeber/vim-addon-mw-utils'
+Bundle 'tomtom/tlib_vim'
+Bundle 'garbas/vim-snipmate'
+Bundle 'kien/ctrlp.vim'
 
-Bundle "wesleyche/SrcExpl"
+Bundle 'wesleyche/SrcExpl'
 " // The switch of the Source Explorer 
 nmap <F8> :SrcExplToggle<CR> 
 " // Set the height of Source Explorer window 
@@ -195,7 +195,7 @@ let g:SrcExpl_prevDefKey = "<F3>"
 " // Set "<F4>" key for displaying the next definition in the jump list 
 let g:SrcExpl_nextDefKey = "<F4>" 
 
-Bundle "wesleyche/Trinity"
+Bundle 'wesleyche/Trinity'
 " Open and close all the three plugins on the same time 
 nmap <F8>  :TrinityToggleAll<CR> 
 " Open and close the Source Explorer separately 
@@ -212,14 +212,19 @@ let g:lt_location_list_toggle_map = '<leader>l'
 let g:lt_quickfix_list_toggle_map = '<leader>q'
 let g:lt_height = 10
 
+"let g:syntastic_cpp_compiler = 'clang++'
+"let g:syntastic_cpp_compiler = 'cppcheck'
+let g:syntastic_cpp_compiler_options = ' -std=c++11 -g -Weffc++ -Wshadow -Werror -Wall -Wextra '
 Bundle 'scrooloose/syntastic'
-Bundle "honza/vim-snippets"
+Bundle 'honza/vim-snippets'
 Bundle 'SirVer/ultisnips'
 "Bundle 'Valloric/YouCompleteMe'
 "let g:UltiSnipsExpandTrigger="<tab>"
 "let g:UltiSnipsJumpForwardTrigger="<c-b>"
 "let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 "let g:UltiSnipsEditSplit="vertical"
+"F7
+Bundle 'funorpain/vim-cpplint'
 
 filetype plugin indent on
 

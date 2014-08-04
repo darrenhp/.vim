@@ -155,7 +155,11 @@ endif
 highlight WhitespaceEOL ctermbg=red guibg=red
 match WhitespaceEOL /\s\+$/
 
+autocmd FileType c,cpp set tabstop=2
+autocmd FileType c,cpp set shiftwidth=2
 autocmd FileType c,cpp set cindent cinoptions=:0g0t0(sus
 autocmd FileType py,python set tabstop=4
 autocmd FileType py,python set shiftwidth=4
+set colorcolumn=80
+
 
