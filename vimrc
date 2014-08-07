@@ -9,6 +9,8 @@ call vundle#rc()
 
 Bundle 'gmarik/vundle'
 
+
+
 Bundle 'colorschemer'
 set t_Co=256
 colorschem xoria256
@@ -154,7 +156,12 @@ Bundle 'bling/vim-airline'
 let g:airline#extensions#tabline#enabled = 1
 "let g:airline#extensions#tabline#left_sep = ' '
 "let g:airline#extensions#tabline#left_alt_sep = '|'
-
+noremap <F1> :bprev!<CR> 
+noremap <F2> :bnext!<CR> 
+noremap <C-left> :bprev!<CR> 
+noremap <C-right> :bnext!<CR> 
+noremap <C-h> :bprev!<CR> 
+noremap <C-l> :bnext!<CR> 
 
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'tomtom/tlib_vim'
@@ -225,6 +232,11 @@ Bundle 'SirVer/ultisnips'
 "let g:UltiSnipsEditSplit="vertical"
 "F7
 Bundle 'funorpain/vim-cpplint'
+
+Bundle 'Chiel92/vim-autoformat'
+let g:formatprg_cpp='astyle'                                                    
+let g:formatprg_args_cpp='--style=google --indent=spaces=2 --attach-namespaces --attach-classes --ind    ent-modifiers --indent-switches --indent-cases --pad-oper --pad-header --align-pointer=type --align-r    eference=type --convert-tabs --max-code-length=80 --break-after-logical'
+noremap <F6> :Autoformat<CR><CR>
 
 filetype plugin indent on
 
