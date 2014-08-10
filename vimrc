@@ -257,3 +257,6 @@ noremap <F6> :Autoformat<CR><CR>
 filetype plugin indent on
 
 source ~/.vim/darrenhp_vimrc
+"Candidate
+"Bundle 'aperezdc/vim-template'
+
