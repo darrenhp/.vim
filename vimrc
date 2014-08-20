@@ -227,9 +227,9 @@ Bundle 'honza/vim-snippets'
 Bundle 'SirVer/ultisnips'
 "Bundle 'Valloric/YouCompleteMe'
 "let g:UltiSnipsExpandTrigger="<tab>"
-"let g:UltiSnipsJumpForwardTrigger="<c-b>"
-"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-"let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsEditSplit="vertical"
 "F7
 Bundle 'funorpain/vim-cpplint'
 
