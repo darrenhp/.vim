@@ -12,9 +12,10 @@ Bundle 'gmarik/vundle'
 
 
 Bundle 'colorschemer'
-set t_Co=256
-colorschem xoria256
-
+"set t_Co=256
+"colorschem xoria256
+Bundle 'noahfrederick/vim-noctu'
+colorscheme noctu
 " 在行号列的左边，显示mark的位置
 " mark相关的命令和快捷键:  :marks; m{mark}, '{mark}, `{mark}
 " '       跳转前的位置 
