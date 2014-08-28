@@ -2,6 +2,7 @@
 
 autocmd! BufNewFile * silent! 0r ~/.vim/templates/template.%:e
 "========================函数==========================“
+
 function! MySys()
   if has("win32")
     return "windows"
@@ -78,68 +79,70 @@ autocmd BufEnter *.py set ts=4 sw=4
 autocmd BufEnter *.hsc set ft=haskell
 autocmd BufEnter *.hs highlight link hsFunction Identifier
 
-map <F5> :call CompileAndRun()<CR>
+"===CompileAndRun() From Watashi===
+"map <F5> :call CompileAndRun()<CR>
 
-function DictGet(dict, key, default)
-  if has_key(a:dict, a:key)
-    let value = a:dict[a:key]
-  else
-    let value = a:default
-  endif
-  return substitute(value, '\s%.\b\s', "'\\0'", 'g')
-endfunction
+"function DictGet(dict, key, default)
+  "if has_key(a:dict, a:key)
+    "let value = a:dict[a:key]
+  "else
+    "let value = a:default
+  "endif
+  "return substitute(value, '\s%.\b\s', "'\\0'", 'g')
+"endfunction
 
-function CompileAndRun()
-  let compileDict = {
-        \ 'c':            'gcc -std=c1x -lm %',
-        \ 'cpp':          'g++ -std=c++11 -g -Weffc++ -Wshadow -Werror -Wall -Wextra %',
-        \ 'cpp.doxygen':  'g++ -std=c++0x %',
-        \ 'cs':           'dmcs -define:__WATASHI__ -r:System.Numerics -langversion:Future %',
-        \ 'd':            'dmd %',
-        \ 'java':         'javac -Xlint %',
-        \ 'pascal':       'fpc -d__WATASHI__ -So -XS %',
-        \ 'fortran':      'gfortran %',
-        \ 'tex':          'xelatex %',
-        \ }
-  let compile = DictGet(compileDict, &filetype, 'true')
-
-  let runDict = {
-        \ 'c':            './a.out',
-        \ 'cpp':          './a.out',
-        \ 'cpp.doxygen':  './a.out',
-        \ 'cs':           'mono %<.exe',
-        \ 'd':            './%<',
-        \ 'java':         'java -D__WATASHI__ %<',
-        \ 'pascal':       './%<',
-        \ 'fortran':      './a.out',
-        \ 'tex':          'evince %<.pdf',
-        \
-        \ 'go':           'go run %',
-        \ 'haskell':      'ulimit -t 60 && ghci -Wall %',
-        \ 'lhaskell':     'ghci -Wall %',
-        \ 'sh':           'bash %',
-        \ 'lisp':         'clisp -i %',
-        \ 'python':       'python2 %',
-        \ 'tcl':          'perl %',
-        \ 'javascript':   'node %',
-        \ 'scheme':       'guile %',
-        \
-        \ 'perl':         'perl %',
-        \ 'php':          'php %',
-        \ 'ruby':         'ruby %',
-        \ 'scala':        'scala %',
-        \ 'ocaml':        'ocaml %',
-        \ }
-  let run = DictGet(runDict, &filetype, 'false')
-
-  let compileAndRun =
-        \ compile . ' && echo __compiled__ && ' .
-        \ run . ' ; echo __done__  && wait && read -n 1'
-
-  execute 'w'
-  execute '!' . compileAndRun
-  "execute '!xterm -fn "10*20" -geometry 80x32 -e "' . compileAndRun . '"'
-endfunction
+"function CompileAndRun()
+  "let compileDict = {
+        "\ 'c':            'gcc -std=c1x -lm %',
+        "\ 'cpp':          'g++ -std=c++11 -g -Weffc++ -Wshadow -Werror -Wall -Wextra %',
+        "\ 'cpp.doxygen':  'g++ -std=c++0x %',
+        "\ 'cs':           'dmcs -define:__WATASHI__ -r:System.Numerics -langversion:Future %',
+        "\ 'd':            'dmd %',
+        "\ 'java':         'javac -Xlint %',
+        "\ 'pascal':       'fpc -d__WATASHI__ -So -XS %',
+        "\ 'fortran':      'gfortran %',
+        "\ 'tex':          'xelatex %',
+        "\ }
+  "let compile = DictGet(compileDict, &filetype, 'true')
+  
+  "let runDict = {
+        "\ 'c':            './a.out',
+        "\ 'cpp':          'a.out',
+        "\ 'cpp.doxygen':  './a.out',
+        "\ 'cs':           'mono %<.exe',
+        "\ 'd':            './%<',
+        "\ 'java':         'java -D__WATASHI__ %<',
+        "\ 'pascal':       './%<',
+        "\ 'fortran':      './a.out',
+        "\ 'tex':          'evince %<.pdf',
+        "\
+        "\ 'go':           'go run %',
+        "\ 'haskell':      'ulimit -t 60 && ghci -Wall %',
+        "\ 'lhaskell':     'ghci -Wall %',
+        "\ 'sh':           'bash %',
+        "\ 'lisp':         'clisp -i %',
+        "\ 'python':       'python2 %',
+        "\ 'tcl':          'perl %',
+        "\ 'javascript':   'node %',
+        "\ 'scheme':       'guile %',
+        "\
+        "\ 'perl':         'perl %',
+        "\ 'php':          'php %',
+        "\ 'ruby':         'ruby %',
+        "\ 'scala':        'scala %',
+        "\ 'ocaml':        'ocaml %',
+        "\ }
+  "let run = DictGet(runDict, &filetype, 'false')
+  "let wait = 'pause'
+  "let compileAndRun =
+        "\ compile . ' && echo __compiled__ && ' .
+        "\ run . ' ; echo __done__ && '
+        ""\ wait . '&& read -n 1'
+  
+  "execute 'w'
+  "execute '!' . compileAndRun
+  ""execute '!xterm -fn "10*20" -geometry 80x32 -e "' . compileAndRun . '"'
+"endfunction
 "==============================================================================="
 
 

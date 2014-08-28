@@ -14,6 +14,7 @@ Bundle 'gmarik/vundle'
 Bundle 'colorschemer'
 "set t_Co=256
 "colorschem xoria256
+set t_Co=16
 Bundle 'noahfrederick/vim-noctu'
 colorscheme noctu
 " 在行号列的左边，显示mark的位置
@@ -94,8 +95,8 @@ Bundle 'gitignore.vim'
 "<Leader>s go to next signed error or warning line
 "let g:cpp_compiler="g++ -std=c++11 -g -Weffc++ -Wshadow -Werror -Wall -Wextra"
 "Bundle 'phonzia/cppSyntaxCheck'
-"Bundle 'xuhdev/SingleCompile'
-"autocmd Filetype cpp nmap <buffer> <F5> :SCCompileRun<CR>
+Bundle 'xuhdev/SingleCompile'
+nmap <F5> :SCCompileRun<CR>
 
 Bundle 'vimwiki/vimwiki'
 Bundle 'vimwiki/utils'
