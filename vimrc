@@ -5,7 +5,15 @@ let mapleader=','
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-
+function! MySys()
+  if has("win32")
+    return "windows"
+  else
+    return "linux"
+  endif
+endfunction
+noremap <F4> :set hlsearch! hlsearch?<CR>
+noremap <C-c> :set hlsearch! hlsearch?<CR>
 
 Bundle 'gmarik/vundle'
 
@@ -164,6 +172,11 @@ noremap <C-left> :bprev!<CR>
 noremap <C-right> :bnext!<CR> 
 noremap <C-h> :bprev!<CR> 
 noremap <C-l> :bnext!<CR> 
+noremap <C-h> :bprev!<CR> 
+noremap <C-w> :bd!<CR> 
+inoremap <C-l> <ESC> :bnext!<CR> 
+inoremap <C-h> <ESC> :bprev!<CR> 
+inoremap <C-w> <ESC> :bd!<CR> 
 
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'tomtom/tlib_vim'
