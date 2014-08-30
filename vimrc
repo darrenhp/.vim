@@ -100,7 +100,7 @@ Bundle 'gitignore.vim'
 "let g:cpp_compiler="g++ -std=c++11 -g -Weffc++ -Wshadow -Werror -Wall -Wextra"
 "Bundle 'phonzia/cppSyntaxCheck'
 Bundle 'xuhdev/SingleCompile'
-nmap <F5> :SCCompileRun<CR>
+map <F5> :SCCompileRun<CR>
 
 Bundle 'vimwiki/vimwiki'
 Bundle 'vimwiki/utils'
@@ -169,11 +169,11 @@ noremap <C-right> :bnext!<CR>
 noremap <C-h> :bprev!<CR> 
 noremap <C-l> :bnext!<CR> 
 noremap <C-h> :bprev!<CR> 
-noremap <C-w> :bd!<CR> 
+"noremap <C-w> :bd!<CR> 
 "inoremap <C-l> <ESC> :bnext!<CR> 
 "inoremap <C-h> <ESC> :bprev!<CR> 
 "inoremap <C-w> <ESC> :bd!<CR> 
-   
+
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'tomtom/tlib_vim'
 Bundle 'garbas/vim-snipmate'
