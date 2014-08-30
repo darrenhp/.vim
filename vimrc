@@ -45,7 +45,7 @@ Bundle 'vim-cpp-enhanced-highlight'
 Bundle 'DoxygenToolkit.vim'
 let g:DoxygenToolkit_commentType = "C++" 
 Bundle 'xuhdev/SingleCompile'
-nmap <F5> :w <CR> :SCCompileRun<CR>
+nmap <F5> :w! <CR> :SCCompileRun<CR>
 autocmd Filetype cpp nmap <buffer> <F5> :SCCompileRunAF  -std=c++11 -g -Weffc++ -Wshadow -Werror -Wall -Wextra <CR>
 Bundle 'vimwiki/utils'
 Bundle 'vimwiki/vimwiki'
