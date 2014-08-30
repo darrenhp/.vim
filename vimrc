@@ -169,7 +169,7 @@ noremap <C-right> :bnext!<CR>
 noremap <C-h> :bprev!<CR> 
 noremap <C-l> :bnext!<CR> 
 noremap <C-h> :bprev!<CR> 
-noremap <C-w> :bd<CR> 
+noremap <C-w> :bd!<CR> 
 "inoremap <C-l> <ESC> :bnext!<CR> 
 "inoremap <C-h> <ESC> :bprev!<CR> 
 "inoremap <C-w> <ESC> :bd!<CR> 
