@@ -5,13 +5,6 @@ let mapleader=','
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-function! MySys()
-  if has("win32")
-    return "windows"
-  else
-    return "linux"
-  endif
-endfunction
 noremap <F4> :set hlsearch! hlsearch?<CR>
 noremap <C-c> :set hlsearch! hlsearch?<CR>
 
@@ -20,11 +13,14 @@ Bundle 'gmarik/vundle'
 
 
 Bundle 'colorschemer'
-"set t_Co=256
-"colorschem xoria256
-set t_Co=16
 Bundle 'noahfrederick/vim-noctu'
-colorscheme noctu
+if has("win32") && !has("gui_running")
+  set t_Co=16
+  colorscheme noctu
+else
+  set t_Co=256
+  colorschem xoria256
+endif
 " 在行号列的左边，显示mark的位置
 " mark相关的命令和快捷键:  :marks; m{mark}, '{mark}, `{mark}
 " '       跳转前的位置 
@@ -160,7 +156,7 @@ Bundle 'tpope/vim-sleuth'
 Bundle 'tpope/vim-abolish'
 Bundle 'tpope/vim-speeddating'
 Bundle 'tpope/vim-rsi'
-Bundle 'tpope/vim-sensible'
+"Bundle 'tpope/vim-sensible'
 
 Bundle 'bling/vim-airline'
 let g:airline#extensions#tabline#enabled = 1
@@ -173,11 +169,11 @@ noremap <C-right> :bnext!<CR>
 noremap <C-h> :bprev!<CR> 
 noremap <C-l> :bnext!<CR> 
 noremap <C-h> :bprev!<CR> 
-noremap <C-w> :bd!<CR> 
-inoremap <C-l> <ESC> :bnext!<CR> 
-inoremap <C-h> <ESC> :bprev!<CR> 
-inoremap <C-w> <ESC> :bd!<CR> 
-
+noremap <C-w> :bd<CR> 
+"inoremap <C-l> <ESC> :bnext!<CR> 
+"inoremap <C-h> <ESC> :bprev!<CR> 
+"inoremap <C-w> <ESC> :bd!<CR> 
+   
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'tomtom/tlib_vim'
 Bundle 'garbas/vim-snipmate'
@@ -272,6 +268,4 @@ noremap <F6> :Autoformat<CR><CR>
 filetype plugin indent on
 
 source ~/.vim/darrenhp_vimrc
-"Candidate
-"Bundle 'aperezdc/vim-template'
 
