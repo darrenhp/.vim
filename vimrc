@@ -13,12 +13,15 @@ Bundle 'gmarik/vundle'
 
 Bundle 'colorschemer'
 Bundle 'noahfrederick/vim-noctu'
+Bundle 'Yggdroot/indentLine'
+Bundle 'octol/vim-cpp-enhanced-highlight'
 if has("win32") && !has("gui_running")
   set t_Co=16
   colorscheme noctu
+  "colorscheme 
 else
   set t_Co=256
-  colorschem xoria256
+  colorscheme xoria256
 endif
 
 
@@ -41,12 +44,11 @@ Bundle 'majutsushi/tagbar'
 nmap <F8> :TagbarToggle<CR>
 
 
-Bundle 'vim-cpp-enhanced-highlight'
 Bundle 'DoxygenToolkit.vim'
 let g:DoxygenToolkit_commentType = "C++" 
 Bundle 'xuhdev/SingleCompile'
 nmap <F5> :w! <CR> :SCCompileRun<CR>
-autocmd Filetype cpp nmap <buffer> <F5> :SCCompileRunAF  -std=c++11 -g -Weffc++ -Wshadow -Werror -Wall -Wextra <CR>
+autocmd Filetype cpp nmap <buffer> <F5> :SCCompileRun  -std=c++11 -g -Weffc++ -Wshadow -Werror -Wall -Wextra <CR>
 Bundle 'vimwiki/utils'
 Bundle 'vimwiki/vimwiki'
 
