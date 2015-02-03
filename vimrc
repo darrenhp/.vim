@@ -46,9 +46,13 @@ nmap <F8> :TagbarToggle<CR>
 
 Bundle 'DoxygenToolkit.vim'
 let g:DoxygenToolkit_commentType = "C++" 
+
 Bundle 'xuhdev/SingleCompile'
+call SingleCompile#ChooseCompiler('cpp', 'g++')
+call SingleCompile#SetCompilerTemplate('cpp', 'g++', 'GNU C++ Compiler', 'g++', '-std=c++11 -g -Weffc++ -Wshadow -Werror -Wall -Wextra -o $(FILE_TITLE)$', '$(FILE_EXEC)$')
 nmap <F5> :w! <CR> :SCCompileRun<CR>
-autocmd Filetype cpp nmap <buffer> <F5> :SCCompileRun  -std=c++11 -g -Weffc++ -Wshadow -Werror -Wall -Wextra <CR>
+"
+"autocmd Filetype cpp nmap <buffer> <F5> :SCCompileRun  -std=c++11 -g -Weffc++ -Wshadow -Werror -Wall -Wextra <CR>
 Bundle 'vimwiki/utils'
 Bundle 'vimwiki/vimwiki'
 
