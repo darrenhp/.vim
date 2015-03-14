@@ -9,11 +9,45 @@ noremap <F4> :set hlsearch! hlsearch?<CR>
 noremap <F3> :set nonumber! nonumber?<CR>
 noremap <C-c> :set hlsearch! hlsearch?<CR>
 
+
 Bundle 'gmarik/vundle'
+
+
+
+
+"===GO
+"Plugin 'jnwhiteh/vim-golang'
+Plugin 'fatih/vim-go'
+autocmd BufEnter *.go set ft=go
+au FileType go nmap <Leader>s <Plug>(go-implements)
+au FileType go nmap <Leader>i <Plug>(go-info)
+au FileType go nmap <Leader>gd <Plug>(go-doc)
+au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
+au FileType go nmap <Leader>gb <Plug>(go-doc-browser)
+au FileType go nmap <leader>r <Plug>(go-run)
+au FileType go nmap <leader>b <Plug>(go-build)
+au FileType go nmap <leader>t <Plug>(go-test)
+au FileType go nmap <leader>c <Plug>(go-coverage
+au FileType go nmap <Leader>ds <Plug>(go-def-split)
+au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
+au FileType go nmap <Leader>dt <Plug>(go-def-tab)
+au FileType go nmap <Leader>e <Plug>(go-rename)
+let g:go_bin_path = expand("~/.gotools")
+let g:go_bin_path = "~/.mypath" 
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+
+
+
+
+"=====
 
 Bundle 'colorschemer'
 Bundle 'noahfrederick/vim-noctu'
-Bundle 'Yggdroot/indentLine'
+"Bundle 'Yggdroot/indentLine'
 Bundle 'octol/vim-cpp-enhanced-highlight'
 if has("win32") && !has("gui_running")
   set t_Co=16
