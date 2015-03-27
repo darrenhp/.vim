@@ -5,13 +5,13 @@ let mapleader=','
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
+noremap <F12> :!pbcopy < %<CR><CR>
 noremap <F4> :set hlsearch! hlsearch?<CR>
 noremap <F3> :set nonumber! nonumber?<CR>
 noremap <C-c> :set hlsearch! hlsearch?<CR>
 
 
 Bundle 'gmarik/vundle'
-
 
 
 
