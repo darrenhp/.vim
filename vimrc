@@ -16,7 +16,6 @@ Bundle 'gmarik/vundle'
 
 
 "===GO
-"Plugin 'jnwhiteh/vim-golang'
 Plugin 'fatih/vim-go'
 autocmd BufEnter *.go set ft=go
 au FileType go nmap <Leader>s <Plug>(go-implements)
@@ -27,7 +26,7 @@ au FileType go nmap <Leader>gb <Plug>(go-doc-browser)
 au FileType go nmap <leader>r <Plug>(go-run)
 au FileType go nmap <leader>b <Plug>(go-build)
 au FileType go nmap <leader>t <Plug>(go-test)
-au FileType go nmap <leader>c <Plug>(go-coverage
+au FileType go nmap <leader>c <Plug>(go-coverage)
 au FileType go nmap <Leader>ds <Plug>(go-def-split)
 au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
 au FileType go nmap <Leader>dt <Plug>(go-def-tab)
@@ -38,12 +37,35 @@ let g:go_highlight_structs = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 
-
-
+"=====Coffee
+Bundle "kchmck/vim-coffee-script"
 
 "=====
+Bundle 'rking/ag.vim'
+Bundle 'mileszs/ack.vim'
+Bundle 'dyng/ctrlsf.vim'
+nmap     <C-F>f <Plug>CtrlSFPrompt
+vmap     <C-F>f <Plug>CtrlSFVwordPath
+vmap     <C-F>F <Plug>CtrlSFVwordExec
+nmap     <C-F>n <Plug>CtrlSFCwordPath
+nmap     <C-F>p <Plug>CtrlSFPwordPath
+nnoremap <C-F>o :CtrlSFOpen<CR>
+let g:ctrlsf_ackprg = 'ag'
+"let g:ctrlsf_position = 'bottom'
+"let g:ctrlsf_position = 'top'
+let g:ctrlsf_position = 'right'
+"let g:ctrlsf_winsize = '30%'
+" or
+"let g:ctrlsf_winsize = '100'
+let g:ctrlsf_auto_close = 0
+let g:ctrlsf_context = '-B 5 -A 3'
 
-Bundle 'colorschemer'
+Plugin 'Shougo/unite.vim'
+
+
+"======
+"Bundle 'colorschemer'
+Bundle 'flazz/vim-colorschemes'
 Bundle 'noahfrederick/vim-noctu'
 "Bundle 'Yggdroot/indentLine'
 Bundle 'octol/vim-cpp-enhanced-highlight'
@@ -52,8 +74,9 @@ if has("win32") && !has("gui_running")
   colorscheme noctu
   "colorscheme 
 else
-  set t_Co=256
-  colorscheme xoria256
+  "set t_Co=256
+  let g:solarized_termcolors=256
+  colorscheme molokai
 endif
 
 
@@ -74,7 +97,33 @@ let g:syntastic_cpp_compiler_options = ' -std=c++11 -g -Weffc++ -Wshadow -Werror
 
 Bundle 'majutsushi/tagbar'
 nmap <F8> :TagbarToggle<CR>
-
+"let g:tagbar_type_go = {
+    "\ 'ctagstype' : 'go',
+    "\ 'kinds'     : [
+        "\ 'p:package',
+        "\ 'i:imports:1',
+        "\ 'c:constants',
+        "\ 'v:variables',
+        "\ 't:types',
+        "\ 'n:interfaces',
+        "\ 'w:fields',
+        "\ 'e:embedded',
+        "\ 'm:methods',
+        "\ 'r:constructor',
+        "\ 'f:functions'
+    "\ ],
+    "\ 'sro' : '.',
+    "\ 'kind2scope' : {
+        "\ 't' : 'ctype',
+        "\ 'n' : 'ntype'
+    "\ },
+    "\ 'scope2kind' : {
+        "\ 'ctype' : 't',
+        "\ 'ntype' : 'n'
+    "\ },
+    "\ 'ctagsbin'  : 'gotags',
+    "\ 'ctagsargs' : '-sort -silent'
+    "\ }
 
 Bundle 'DoxygenToolkit.vim'
 let g:DoxygenToolkit_commentType = "C++" 
@@ -85,8 +134,8 @@ call SingleCompile#SetCompilerTemplate('cpp', 'g++', 'GNU C++ Compiler', 'g++', 
 nmap <F5> :w! <CR> :SCCompileRun<CR>
 "
 "autocmd Filetype cpp nmap <buffer> <F5> :SCCompileRun  -std=c++11 -g -Weffc++ -Wshadow -Werror -Wall -Wextra <CR>
-Bundle 'vimwiki/utils'
-Bundle 'vimwiki/vimwiki'
+"Bundle 'vimwiki/utils'
+"Bundle 'vimwiki/vimwiki'
 
 " 快速查找
 Bundle 'Lokaltog/vim-easymotion'
