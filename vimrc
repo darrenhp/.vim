@@ -6,13 +6,23 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 noremap <F12> :!pbcopy < %<CR><CR>
+noremap <F9> :!~/oj_submiter/sb.py % <CR>
 noremap <F4> :set hlsearch! hlsearch?<CR>
 noremap <F3> :set nonumber! nonumber?<CR>
 noremap <C-c> :set hlsearch! hlsearch?<CR>
-
+nmap <silent> <leader>/ :set invhlsearch<CR>
+cmap w!! w !sudo tee % >/dev/null
+cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
+map <leader>ew :e %%
+map <leader>es :sp %%
+map <leader>ev :vsp %%
+map <leader>et :tabe %%
+map zl zL
+map zh zH
+map <S-H> gT
+map <S-L> gt
 
 Bundle 'gmarik/vundle'
-
 
 
 "===GO
@@ -82,11 +92,25 @@ endif
 
 
 Bundle 'scrooloose/nerdtree'
-autocmd StdinReadPre * let s:std_in=1
+"autocmd StdinReadPre * let s:std_in=1
 "autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-map <C-n> :NERDTreeToggle<CR>
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+"map <C-n> :NERDTreeToggle<CR>
+"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+let g:NERDShutUp=1
+Bundle 'jistr/vim-nerdtree-tabs'
+map <C-e> <plug>NERDTreeTabsToggle<CR>
+map <leader>e :NERDTreeFind<CR>
+nmap <leader>nt :NERDTreeFind<CR>
 
+let NERDTreeShowBookmarks=1
+let NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$']
+let NERDTreeChDirMode=0
+let NERDTreeQuitOnOpen=1
+let NERDTreeMouseMode=2
+let NERDTreeShowHidden=1
+let NERDTreeKeepTreeInNewTab=1
+let NERDTreeOpenOnNewTab=1
+"let g:nerdtree_tabs_open_on_new_tab
 " 快速注释，主要是[count]<leader>cc, cu, ci, cy, cs, cA, cm
 Bundle 'scrooloose/nerdcommenter'
 
@@ -98,32 +122,32 @@ let g:syntastic_cpp_compiler_options = ' -std=c++11 -g -Weffc++ -Wshadow -Werror
 Bundle 'majutsushi/tagbar'
 nmap <F8> :TagbarToggle<CR>
 "let g:tagbar_type_go = {
-    "\ 'ctagstype' : 'go',
-    "\ 'kinds'     : [
-        "\ 'p:package',
-        "\ 'i:imports:1',
-        "\ 'c:constants',
-        "\ 'v:variables',
-        "\ 't:types',
-        "\ 'n:interfaces',
-        "\ 'w:fields',
-        "\ 'e:embedded',
-        "\ 'm:methods',
-        "\ 'r:constructor',
-        "\ 'f:functions'
-    "\ ],
-    "\ 'sro' : '.',
-    "\ 'kind2scope' : {
-        "\ 't' : 'ctype',
-        "\ 'n' : 'ntype'
-    "\ },
-    "\ 'scope2kind' : {
-        "\ 'ctype' : 't',
-        "\ 'ntype' : 'n'
-    "\ },
-    "\ 'ctagsbin'  : 'gotags',
-    "\ 'ctagsargs' : '-sort -silent'
-    "\ }
+"\ 'ctagstype' : 'go',
+"\ 'kinds'     : [
+"\ 'p:package',
+"\ 'i:imports:1',
+"\ 'c:constants',
+"\ 'v:variables',
+"\ 't:types',
+"\ 'n:interfaces',
+"\ 'w:fields',
+"\ 'e:embedded',
+"\ 'm:methods',
+"\ 'r:constructor',
+"\ 'f:functions'
+"\ ],
+"\ 'sro' : '.',
+"\ 'kind2scope' : {
+"\ 't' : 'ctype',
+"\ 'n' : 'ntype'
+"\ },
+"\ 'scope2kind' : {
+"\ 'ctype' : 't',
+"\ 'ntype' : 'n'
+"\ },
+"\ 'ctagsbin'  : 'gotags',
+"\ 'ctagsargs' : '-sort -silent'
+"\ }
 
 Bundle 'DoxygenToolkit.vim'
 let g:DoxygenToolkit_commentType = "C++" 
@@ -168,13 +192,13 @@ Bundle 'bling/vim-airline'
 let g:airline#extensions#tabline#enabled = 1
 "let g:airline#extensions#tabline#left_sep = ' '
 "let g:airline#extensions#tabline#left_alt_sep = '>'
+Bundle 'bling/vim-bufferline'
 noremap <F1> :bprev!<CR> 
 noremap <F2> :bnext!<CR> 
 noremap <C-left> :bprev!<CR> 
 noremap <C-right> :bnext!<CR> 
 noremap <C-h> :bprev!<CR> 
 noremap <C-l> :bnext!<CR> 
-noremap <C-h> :bprev!<CR> 
 "noremap <C-w> :bd!<CR> 
 "inoremap <C-l> <ESC> :bnext!<CR> 
 "inoremap <C-h> <ESC> :bprev!<CR> 
@@ -191,6 +215,25 @@ let g:lt_height = 10
 
 "F7
 Bundle 'funorpain/vim-cpplint'
+
+
+Bundle 'godlygeek/tabular'
+nmap <Leader>a& :Tabularize /&<CR>
+vmap <Leader>a& :Tabularize /&<CR>
+nmap <Leader>a= :Tabularize /=<CR>
+vmap <Leader>a= :Tabularize /=<CR>
+nmap <Leader>a=> :Tabularize /=><CR>
+vmap <Leader>a=> :Tabularize /=><CR>
+nmap <Leader>a: :Tabularize /:<CR>
+vmap <Leader>a: :Tabularize /:<CR>
+nmap <Leader>a:: :Tabularize /:\zs<CR>
+vmap <Leader>a:: :Tabularize /:\zs<CR>
+nmap <Leader>a, :Tabularize /,<CR>
+vmap <Leader>a, :Tabularize /,<CR>
+nmap <Leader>a,, :Tabularize /,\zs<CR>
+vmap <Leader>a,, :Tabularize /,\zs<CR>
+nmap <Leader>a<Bar> :Tabularize /<Bar><CR>
+vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
 
 Bundle 'Chiel92/vim-autoformat'
 let g:formatprg_cpp='astyle'
