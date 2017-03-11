@@ -82,7 +82,7 @@ Bundle 'octol/vim-cpp-enhanced-highlight'
 if has("win32") && !has("gui_running")
   set t_Co=16
   colorscheme noctu
-  "colorscheme 
+  "colorscheme
 else
   "set t_Co=256
   let g:solarized_termcolors=256
@@ -150,7 +150,7 @@ nmap <F8> :TagbarToggle<CR>
 "\ }
 
 Bundle 'DoxygenToolkit.vim'
-let g:DoxygenToolkit_commentType = "C++" 
+let g:DoxygenToolkit_commentType = "C++"
 
 Bundle 'xuhdev/SingleCompile'
 call SingleCompile#ChooseCompiler('cpp', 'g++')
@@ -193,16 +193,16 @@ let g:airline#extensions#tabline#enabled = 1
 "let g:airline#extensions#tabline#left_sep = ' '
 "let g:airline#extensions#tabline#left_alt_sep = '>'
 Bundle 'bling/vim-bufferline'
-noremap <F1> :bprev!<CR> 
-noremap <F2> :bnext!<CR> 
-noremap <C-left> :bprev!<CR> 
-noremap <C-right> :bnext!<CR> 
-noremap <C-h> :bprev!<CR> 
-noremap <C-l> :bnext!<CR> 
-"noremap <C-w> :bd!<CR> 
-"inoremap <C-l> <ESC> :bnext!<CR> 
-"inoremap <C-h> <ESC> :bprev!<CR> 
-"inoremap <C-w> <ESC> :bd!<CR> 
+noremap <F1> :bprev!<CR>
+noremap <F2> :bnext!<CR>
+noremap <C-left> :bprev!<CR>
+noremap <C-right> :bnext!<CR>
+noremap <C-h> :bprev!<CR>
+noremap <C-l> :bnext!<CR>
+"noremap <C-w> :bd!<CR>
+"inoremap <C-l> <ESC> :bnext!<CR>
+"inoremap <C-h> <ESC> :bprev!<CR>
+"inoremap <C-w> <ESC> :bd!<CR>
 
 "Bundle 'garbas/vim-snipmate'
 Bundle 'kien/ctrlp.vim'
@@ -235,25 +235,27 @@ vmap <Leader>a,, :Tabularize /,\zs<CR>
 nmap <Leader>a<Bar> :Tabularize /<Bar><CR>
 vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
 
+
+let g:autoformat_verbosemode=1
 Bundle 'Chiel92/vim-autoformat'
-let g:formatprg_cpp='astyle'
-"let g:formatprg_args_cpp='--style=google --indent=spaces=2 --attach-namespaces --attach-classes --indent-modifiers --indent-switches --indent-cases --pad-oper --pad-header --align-pointer=type --align-reference=type --convert-tabs --max-code-length=80 --break-after-logical --lineend=linux'
-let g:formatprg_args_cpp = ''
-let g:formatprg_args_cpp.= ' '. '--style=google'
-let g:formatprg_args_cpp.= ' '. '--indent=spaces=2'
-let g:formatprg_args_cpp.= ' '. '--attach-namespaces'
-let g:formatprg_args_cpp.= ' '. '--attach-classes'
-let g:formatprg_args_cpp.= ' '. '--indent-modifiers'
-let g:formatprg_args_cpp.= ' '. '--indent-switches'
-let g:formatprg_args_cpp.= ' '. '--indent-cases'
-let g:formatprg_args_cpp.= ' '. '--pad-oper'
-let g:formatprg_args_cpp.= ' '. '--pad-header'
-let g:formatprg_args_cpp.= ' '. '--align-pointer=type'
-let g:formatprg_args_cpp.= ' '. '--align-reference=type'
-let g:formatprg_args_cpp.= ' '. '--convert-tabs'
-let g:formatprg_args_cpp.= ' '. '--max-code-length=80'
-let g:formatprg_args_cpp.= ' '. '--break-after-logical'
-let g:formatprg_args_cpp.= ' '. '--lineend=linux'
+"let g:formatters_astyle_cpp=['astyle_cpp'] 
+let g:formatdef_astyle_cpp='"astyle --style=google --indent=spaces=2 --attach-namespaces --attach-classes --indent-modifiers --indent-switches --indent-cases --pad-oper --pad-header --align-pointer=type --align-reference=type --convert-tabs --max-code-length=80 --break-after-logical --lineend=linux"'
+"let g:formatdef_astyle_cpp = ''
+"let g:formatdef_astyle_cpp.= ' '. '--style=google'
+"let g:formatdef_astyle_cpp.= ' '. '--indent=spaces=2'
+"let g:formatdef_astyle.= ' '. '--attach-namespaces'
+"let g:formatdef_astyle.= ' '. '--attach-classes'
+"let g:formatdef_astyle.= ' '. '--indent-modifiers'
+"let g:formatdef_astyle.= ' '. '--indent-switches'
+"let g:formatdef_astyle.= ' '. '--indent-cases'
+"let g:formatdef_astyle.= ' '. '--pad-oper'
+"let g:formatdef_astyle.= ' '. '--pad-header'
+"let g:formatdef_astyle.= ' '. '--align-pointer=type'
+"let g:formatdef_astyle.= ' '. '--align-reference=type'
+"let g:formatdef_astyle.= ' '. '--convert-tabs'
+"let g:formatdef_astyle.= ' '. '--max-code-length=80'
+"let g:formatdef_astyle.= ' '. '--break-after-logical'
+"let g:formatdef_astyle.= ' '. '--lineend=linux'
 noremap <F6> :Autoformat<CR><CR>
 
 filetype plugin indent on
