@@ -6,7 +6,7 @@ my-vim-config based on vundle
 - 下载配置    : `git clone git@github.com:darrenhp/.vim.git ~/.vim`
 - 链接配置文件: `echo 'source ~/.vim/vimrc' > ~/.vimrc`
 
-- 安装Vundle：`git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle`
+- 安装Vundle：`git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim`
 - 安装插件： `:BundleInstall`
 - 更新插件： `:BundleInstall!`
 - 卸载不在列表中的插件： `:BundleClean"`

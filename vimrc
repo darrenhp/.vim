@@ -22,7 +22,7 @@ map zh zH
 map <S-H> gT
 map <S-L> gt
 
-Bundle 'gmarik/vundle'
+Bundle 'VundleVim/Vundle.vim'
 
 
 "===GO
