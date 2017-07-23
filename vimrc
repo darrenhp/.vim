@@ -102,12 +102,7 @@ Plugin 'Shougo/denite.nvim'
 "======
 "Bundle 'colorschemer'
 Bundle 'flazz/vim-colorschemes'
-Bundle 'noahfrederick/vim-noctu'
-"Bundle 'Yggdroot/indentLine'
 Bundle 'octol/vim-cpp-enhanced-highlight'
-
-
-
 Bundle 'scrooloose/nerdtree'
 "autocmd StdinReadPre * let s:std_in=1
 "autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
@@ -138,9 +133,6 @@ let g:syntastic_cpp_compiler_options = ' -std=c++11 -g -Weffc++ -Wshadow -Werror
 
 Bundle 'majutsushi/tagbar'
 nmap <F8> :TagbarToggle<CR>
-
-Bundle 'DoxygenToolkit.vim'
-let g:DoxygenToolkit_commentType = "C++"
 
 Bundle 'xuhdev/SingleCompile'
 "call SingleCompile#ChooseCompiler('cpp', 'g++')
