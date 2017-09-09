@@ -1,5 +1,5 @@
 ﻿"set nocompatible               " be iMproved
-"filetype off                   " required!
+filetype off                   " required!
 let mapleader=','
 
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -7,6 +7,9 @@ call vundle#begin()
 
 
 Bundle 'VundleVim/Vundle.vim'
+
+"===Scala
+Bundle 'derekwyatt/vim-scala'
 
 "===GO
 Plugin 'fatih/vim-go'
@@ -96,7 +99,7 @@ Bundle 'mileszs/ack.vim'
 "let g:ctrlsf_auto_close = 0
 "let g:ctrlsf_context = '-B 5 -A 3'
 
-Plugin 'Shougo/denite.nvim'
+Bundle 'Shougo/denite.nvim'
 
 
 "======
@@ -193,8 +196,8 @@ Bundle 'Chiel92/vim-autoformat'
 let g:formatdef_astyle_cpp='"astyle --style=google --indent=spaces=2 --attach-namespaces --attach-classes --indent-modifiers --indent-switches --indent-cases --pad-oper --pad-header --align-pointer=type --align-reference=type --convert-tabs --max-code-length=80 --break-after-logical --lineend=linux"'
 noremap <F6> :Autoformat<CR><CR>
 
-filetype plugin indent on
 call vundle#end()
+filetype plugin indent on
 
 source ~/.vim/darrenhp_vimrc
 

@@ -74,7 +74,7 @@ if has("win32") && !has("gui_running")
   colorscheme noctu
   "colorscheme
 else
-  "set t_Co=256
+  set t_Co=256
   let g:solarized_termcolors=256
   colorscheme molokai
 endif
