@@ -9,7 +9,7 @@ call vundle#begin()
 Bundle 'VundleVim/Vundle.vim'
 
 "===Scala
-Bundle 'derekwyatt/vim-scala'
+"Bundle 'derekwyatt/vim-scala'
 
 "===GO
 Plugin 'fatih/vim-go'
@@ -193,7 +193,8 @@ let g:lt_height = 10
 
 let g:autoformat_verbosemode=1
 Bundle 'Chiel92/vim-autoformat'
-let g:formatdef_astyle_cpp='"astyle --style=google --indent=spaces=2 --attach-namespaces --attach-classes --indent-modifiers --indent-switches --indent-cases --pad-oper --pad-header --align-pointer=type --align-reference=type --convert-tabs --max-code-length=80 --break-after-logical --lineend=linux"'
+let g:formatdef_my_custom_cpp='"astyle --style=google --indent=spaces=2 --attach-namespaces --attach-classes --indent-modifiers --indent-switches --indent-cases --pad-oper --pad-header --align-pointer=type --align-reference=type --convert-tabs --max-code-length=80 --break-after-logical --lineend=linux"'
+let g:formatters_cpp = ['my_custom_cpp']
 noremap <F6> :Autoformat<CR><CR>
 
 call vundle#end()
