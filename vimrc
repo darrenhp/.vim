@@ -1,39 +1,59 @@
 ﻿"set nocompatible               " be iMproved
 filetype off                   " required!
 let mapleader=','
+call plug#begin('~/.vim/plugged')
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+" Make sure you use single quotes
 
+" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
+Plug 'junegunn/vim-easy-align'
+Plug 'vim-scripts/colorschemer'
+Plug 'flazz/vim-colorschemes'
+Plug 'rking/ag.vim'
+Plug 'kien/ctrlp.vim'
+"let g:ctrlp_map = '<c-p>'
+Plug 'scrooloose/nerdcommenter'
+Plug 'Chiel92/vim-autoformat'
+Plug 'vim-scripts/YankRing.vim'
+"Plug 'Yggdroot/LeaderF'
+Plug 'bling/vim-airline'
+let g:airline#extensions#tabline#enabled = 1
+"let g:airline#extensions#tabline#left_sep = ' '
+Plug 'bling/vim-bufferline'
+noremap <C-h> :bprev!<CR>
+noremap <C-l> :bnext!<CR>
 
-Bundle 'VundleVim/Vundle.vim'
+" Any valid git URL is allowed
+""Plug 'https://github.com/junegunn/vim-github-dashboard.git'
 
-"===Scala
-"Bundle 'derekwyatt/vim-scala'
+" Multiple Plug commands can be written in a single line using | separators
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
-"===GO
-Plugin 'fatih/vim-go'
-let g:go_fmt_command = "goimports"
-let g:go_autodetect_gopath = 1
-let g:go_list_type = "quickfix"
-
-let g:go_highlight_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_extra_types = 1
-let g:go_highlight_generate_tags = 1
-
-" Open :GoDeclsDir with ctrl-g
-nmap <C-g> :GoDeclsDir<cr>
-imap <C-g> <esc>:<C-u>GoDeclsDir<cr>
+" On-demand loading
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
+Plug 'fatih/vim-go', { 'for': 'go' }
 
 
 augroup go
+  let g:go_fmt_command = "goimports"
+  let g:go_autodetect_gopath = 1
+  let g:go_list_type = "quickfix"
+
+  let g:go_highlight_types = 1
+  let g:go_highlight_fields = 1
+  let g:go_highlight_functions = 1
+  let g:go_highlight_methods = 1
+  let g:go_highlight_extra_types = 1
+  let g:go_highlight_generate_tags = 1
+
+  " Open :GoDeclsDir with ctrl-g
+  nmap <C-g> :GoDeclsDir<cr>
+  imap <C-g> <esc>:<C-u>GoDeclsDir<cr>
   autocmd!
 
   " Show by default 4 spaces for a tab
-  autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
+  autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=2 shiftwidth=2
 
   " :GoBuild and :GoTestCompile
   autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
@@ -66,139 +86,145 @@ augroup go
   autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
   autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
   autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
+  function! s:build_go_files()
+    let l:file = expand('%')
+    if l:file =~# '^\f\+_test\.go$'
+      call go#cmd#Test(0, 1)
+    elseif l:file =~# '^\f\+\.go$'
+      call go#cmd#Build(0)
+    endif
+  endfunction
 augroup END
 
 " build_go_files is a custom function that builds or compiles the test file.
 " It calls :GoBuild if its a Go file, or :GoTestCompile if it's a test file
-function! s:build_go_files()
-  let l:file = expand('%')
-  if l:file =~# '^\f\+_test\.go$'
-    call go#cmd#Test(0, 1)
-  elseif l:file =~# '^\f\+\.go$'
-    call go#cmd#Build(0)
-  endif
-endfunction
 
-"=====
-Bundle 'rking/ag.vim'
-Bundle 'mileszs/ack.vim'
-"Bundle 'dyng/ctrlsf.vim'
-"nmap     <C-F>f <Plug>CtrlSFPrompt
-"vmap     <C-F>f <Plug>CtrlSFVwordPath
-"vmap     <C-F>F <Plug>CtrlSFVwordExec
-"nmap     <C-F>n <Plug>CtrlSFCwordPath
-"nmap     <C-F>p <Plug>CtrlSFPwordPath
-"nnoremap <C-F>o :CtrlSFOpen<CR>
-"let g:ctrlsf_ackprg = 'ag'
-""let g:ctrlsf_position = 'bottom'
-""let g:ctrlsf_position = 'top'
-"let g:ctrlsf_position = 'right'
-""let g:ctrlsf_winsize = '30%'
-"" or
-""let g:ctrlsf_winsize = '100'
-"let g:ctrlsf_auto_close = 0
-"let g:ctrlsf_context = '-B 5 -A 3'
+" Using a non-master branch
+Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 
-Bundle 'Shougo/denite.nvim'
+" Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
+""Plug 'fatih/vim-go', { 'tag': '*' }
 
+" Plugin options
+Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
 
-"======
-"Bundle 'colorschemer'
-Bundle 'flazz/vim-colorschemes'
-Bundle 'octol/vim-cpp-enhanced-highlight'
-Bundle 'scrooloose/nerdtree'
-"autocmd StdinReadPre * let s:std_in=1
-"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-"map <C-n> :NERDTreeToggle<CR>
-"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-let g:NERDShutUp=1
-Bundle 'jistr/vim-nerdtree-tabs'
-map <C-e> <plug>NERDTreeTabsToggle<CR>
-map <leader>e :NERDTreeFind<CR>
-nmap <leader>nt :NERDTreeFind<CR>
+" Plugin outside ~/.vim/plugged with post-update hook
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
-let NERDTreeShowBookmarks=1
-let NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$']
-let NERDTreeChDirMode=0
-let NERDTreeQuitOnOpen=1
-let NERDTreeMouseMode=2
-let NERDTreeShowHidden=1
-let NERDTreeKeepTreeInNewTab=1
-let NERDTreeOpenOnNewTab=1
-"let g:nerdtree_tabs_open_on_new_tab
-" 快速注释，主要是[count]<leader>cc, cu, ci, cy, cs, cA, cm
-Bundle 'scrooloose/nerdcommenter'
+" Unmanaged plugin (manually installed and updated)
+Plug '~/my-prototype-plugin'
 
-"let g:syntastic_cpp_compiler = 'clang++'
-"let g:syntastic_cpp_compiler = 'cppcheck'
-Bundle 'scrooloose/syntastic'
-let g:syntastic_cpp_compiler_options = ' -std=c++11 -g -Weffc++ -Wshadow -Werror -Wall -Wextra '
+" Initialize plugin system
+call plug#end()
 
-Bundle 'majutsushi/tagbar'
-nmap <F8> :TagbarToggle<CR>
+""===GO
 
-Bundle 'xuhdev/SingleCompile'
-"call SingleCompile#ChooseCompiler('cpp', 'g++')
-"call SingleCompile#SetCompilerTemplate('cpp', 'g++', 'GNU C++ Compiler', 'g++', '-std=c++11 -g -Weffc++ -Wshadow -Werror -Wall -Wextra -o $(FILE_TITLE)$', '$(FILE_EXEC)$')
-nmap <F5> :w! <CR> :SCCompileRun<CR>
+""=====
+"Plugin 'rking/ag.vim'
+"Plugin 'mileszs/ack.vim'
+""Plugin 'dyng/ctrlsf.vim'
+""nmap     <C-F>f <Plug>CtrlSFPrompt
+""vmap     <C-F>f <Plug>CtrlSFVwordPath
+""vmap     <C-F>F <Plug>CtrlSFVwordExec
+""nmap     <C-F>n <Plug>CtrlSFCwordPath
+""nmap     <C-F>p <Plug>CtrlSFPwordPath
+""nnoremap <C-F>o :CtrlSFOpen<CR>
+""let g:ctrlsf_ackprg = 'ag'
+"""let g:ctrlsf_position = 'bottom'
+"""let g:ctrlsf_position = 'top'
+""let g:ctrlsf_position = 'right'
+"""let g:ctrlsf_winsize = '30%'
+""" or
+"""let g:ctrlsf_winsize = '100'
+""let g:ctrlsf_auto_close = 0
+""let g:ctrlsf_context = '-B 5 -A 3'
 
-" 快速查找
-Bundle 'Lokaltog/vim-easymotion'
-let g:EasyMotion_do_mapping = 0 " Disable default mappings
-" Bi-directional find motion
-" Jump to anywhere you want with minimal keystrokes, with just one key binding.
-" `s{char}{label}`
-nmap s <Plug>(easymotion-s)
-" or
-" `s{char}{char}{label}`
-" Need one more keystroke, but on average, it may be more comfortable.
-nmap s <Plug>(easymotion-s2)
-nmap t <Plug>(easymotion-t2)
-" Turn on case sensitive feature
-let g:EasyMotion_smartcase = 1
-
-map / <Plug>(easymotion-sn)
-map  n <Plug>(easymotion-next)
-map  N <Plug>(easymotion-prev)
-" JK motions: Line motions
-" Gif config
-"map <Leader>l <Plug>(easymotion-lineforward)
-map <Leader>j <Plug>(easymotion-j)
-map <Leader>k <Plug>(easymotion-k)
-"map <Leader>h <Plug>(easymotion-linebackward)
-let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion
+""Plugin 'Shougo/denite.nvim'
 
 
-Bundle 'bling/vim-airline'
-let g:airline#extensions#tabline#enabled = 1
-"let g:airline#extensions#tabline#left_sep = ' '
-"let g:airline#extensions#tabline#left_alt_sep = '>'
-Bundle 'bling/vim-bufferline'
-noremap <F1> :bprev!<CR>
-noremap <F2> :bnext!<CR>
-noremap <C-left> :bprev!<CR>
-noremap <C-right> :bnext!<CR>
-noremap <C-h> :bprev!<CR>
-noremap <C-l> :bnext!<CR>
+""======
+""Plugin 'colorschemer'
+""Plugin 'flazz/vim-colorschemes'
+""Plugin 'octol/vim-cpp-enhanced-highlight'
+""Plugin 'scrooloose/nerdtree'
+""autocmd StdinReadPre * let s:std_in=1
+""autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+""map <C-n> :NERDTreeToggle<CR>
+""autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+""let g:NERDShutUp=1
+""Plugin 'jistr/vim-nerdtree-tabs'
+""map <C-e> <plug>NERDTreeTabsToggle<CR>
+""map <leader>e :NERDTreeFind<CR>
+""nmap <leader>nt :NERDTreeFind<CR>
 
-Bundle 'kien/ctrlp.vim'
+""let NERDTreeShowBookmarks=1
+""let NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$']
+""let NERDTreeChDirMode=0
+""let NERDTreeQuitOnOpen=1
+""let NERDTreeMouseMode=2
+""let NERDTreeShowHidden=1
+""let NERDTreeKeepTreeInNewTab=1
+""let NERDTreeOpenOnNewTab=1
+""let g:nerdtree_tabs_open_on_new_tab
+"" 快速注释，主要是[count]<leader>cc, cu, ci, cy, cs, cA, cm
+""Plugin 'scrooloose/nerdcommenter'
 
-Bundle 'Valloric/ListToggle'
-let g:lt_location_list_toggle_map = '<leader>l'
-let g:lt_quickfix_list_toggle_map = '<leader>q'
-let g:lt_height = 10
+""let g:syntastic_cpp_compiler = 'clang++'
+""let g:syntastic_cpp_compiler = 'cppcheck'
+""Plugin 'scrooloose/syntastic'
+""let g:syntastic_cpp_compiler_options = ' -std=c++11 -g -Weffc++ -Wshadow -Werror -Wall -Wextra '
 
-"Bundle 'funorpain/vim-cpplint'
+""Plugin 'majutsushi/tagbar'
+""nmap <F8> :TagbarToggle<CR>
+
+""Plugin 'xuhdev/SingleCompile'
+"""call SingleCompile#ChooseCompiler('cpp', 'g++')
+"""call SingleCompile#SetCompilerTemplate('cpp', 'g++', 'GNU C++ Compiler', 'g++', '-std=c++11 -g -Weffc++ -Wshadow -Werror -Wall -Wextra -o $(FILE_TITLE)$', '$(FILE_EXEC)$')
+""nmap <F5> :w! <CR> :SCCompileRun<CR>
+
+""" 快速查找
+""Plugin 'Lokaltog/vim-easymotion'
+""let g:EasyMotion_do_mapping = 0 " Disable default mappings
+""" Bi-directional find motion
+""" Jump to anywhere you want with minimal keystrokes, with just one key binding.
+""" `s{char}{label}`
+""nmap s <Plug>(easymotion-s)
+""" or
+""" `s{char}{char}{label}`
+""" Need one more keystroke, but on average, it may be more comfortable.
+""nmap s <Plug>(easymotion-s2)
+""nmap t <Plug>(easymotion-t2)
+""" Turn on case sensitive feature
+""let g:EasyMotion_smartcase = 1
+
+""map / <Plug>(easymotion-sn)
+""map  n <Plug>(easymotion-next)
+""map  N <Plug>(easymotion-prev)
+""" JK motions: Line motions
+""" Gif config
+"""map <Leader>l <Plug>(easymotion-lineforward)
+""map <Leader>j <Plug>(easymotion-j)
+""map <Leader>k <Plug>(easymotion-k)
+"""map <Leader>h <Plug>(easymotion-linebackward)
+""let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion
 
 
-let g:autoformat_verbosemode=1
-Bundle 'Chiel92/vim-autoformat'
+""Plugin 'Valloric/ListToggle'
+""let g:lt_location_list_toggle_map = '<leader>l'
+""let g:lt_quickfix_list_toggle_map = '<leader>q'
+""let g:lt_height = 10
+
+"""Plugin 'funorpain/vim-cpplint'
+
+
+""let g:autoformat_verbosemode=1
+""Plugin 'Chiel92/vim-autoformat'
 let g:formatdef_my_custom_cpp='"astyle --style=google --indent=spaces=2 --attach-namespaces --attach-classes --indent-modifiers --indent-switches --indent-cases --pad-oper --pad-header --align-pointer=type --align-reference=type --convert-tabs --max-code-length=80 --break-after-logical --lineend=linux"'
 let g:formatters_cpp = ['my_custom_cpp']
 noremap <F6> :Autoformat<CR><CR>
 
-call vundle#end()
-filetype plugin indent on
+""call vundle#end()
+""filetype plugin indent on
 
 source ~/.vim/darrenhp_vimrc
 
