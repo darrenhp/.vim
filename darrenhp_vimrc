@@ -11,10 +11,11 @@ autocmd! BufNewFile * silent! 0r ~/.vim/templates/template.%:e
 "设置快速编辑.vimrc文件 ,e 编辑.vimrc
 nmap <leader>vv :edit $HOME/.vim/vimrc<CR> 
 nmap <leader>dd :edit $HOME/.vim/darrenhp_vimrc<CR> 
-noremap <F12> :!pbcopy < %<CR><CR>
-noremap <F9> :!~/oj_submiter/sb.py % <CR>
-noremap <F4> :set hlsearch! hlsearch?<CR>
+noremap <F11> :YRShow<CR>
 noremap <F3> :set nonumber! nonumber?<CR>
+noremap <F4> :set hlsearch! hlsearch?<CR>
+noremap <F9> :!~/oj_submiter/sb.py % <CR>
+noremap <F12> :!pbcopy < %<CR><CR>
 "
 "保存.vimrc文件后会自动调用新的.vimrc
 "autocmd bufwritepost .vimrc source $MYVIMRC 

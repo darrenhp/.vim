@@ -20,87 +20,25 @@ Plug 'bling/vim-airline'
 let g:airline#extensions#tabline#enabled = 1
 "let g:airline#extensions#tabline#left_sep = ' '
 Plug 'bling/vim-bufferline'
-noremap <C-h> :bprev!<CR>
-noremap <C-l> :bnext!<CR>
 
 " Any valid git URL is allowed
 ""Plug 'https://github.com/junegunn/vim-github-dashboard.git'
 
 " Multiple Plug commands can be written in a single line using | separators
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 
 " On-demand loading
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+"Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 Plug 'fatih/vim-go', { 'for': 'go' }
 
 
-augroup go
-  let g:go_fmt_command = "goimports"
-  let g:go_autodetect_gopath = 1
-  let g:go_list_type = "quickfix"
 
-  let g:go_highlight_types = 1
-  let g:go_highlight_fields = 1
-  let g:go_highlight_functions = 1
-  let g:go_highlight_methods = 1
-  let g:go_highlight_extra_types = 1
-  let g:go_highlight_generate_tags = 1
-
-  " Open :GoDeclsDir with ctrl-g
-  nmap <C-g> :GoDeclsDir<cr>
-  imap <C-g> <esc>:<C-u>GoDeclsDir<cr>
-  autocmd!
-
-  " Show by default 4 spaces for a tab
-  autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=2 shiftwidth=2
-
-  " :GoBuild and :GoTestCompile
-  autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
-
-  " :GoTest
-  autocmd FileType go nmap <leader>t  <Plug>(go-test)
-
-  " :GoRun
-  autocmd FileType go nmap <leader>r  <Plug>(go-run)
-
-  " :GoDoc
-  autocmd FileType go nmap <Leader>d <Plug>(go-doc)
-
-  " :GoCoverageToggle
-  autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
-
-  " :GoInfo
-  autocmd FileType go nmap <Leader>i <Plug>(go-info)
-
-  " :GoMetaLinter
-  autocmd FileType go nmap <Leader>l <Plug>(go-metalinter)
-
-  " :GoDef but opens in a vertical split
-  autocmd FileType go nmap <Leader>v <Plug>(go-def-vertical)
-  " :GoDef but opens in a horizontal split
-  autocmd FileType go nmap <Leader>s <Plug>(go-def-split)
-
-  " :GoAlternate  commands :A, :AV, :AS and :AT
-  autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
-  autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
-  autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
-  autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
-  function! s:build_go_files()
-    let l:file = expand('%')
-    if l:file =~# '^\f\+_test\.go$'
-      call go#cmd#Test(0, 1)
-    elseif l:file =~# '^\f\+\.go$'
-      call go#cmd#Build(0)
-    endif
-  endfunction
-augroup END
-
-" build_go_files is a custom function that builds or compiles the test file.
-" It calls :GoBuild if its a Go file, or :GoTestCompile if it's a test file
 
 " Using a non-master branch
-Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
+"Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 
 " Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
 ""Plug 'fatih/vim-go', { 'tag': '*' }
@@ -112,62 +50,35 @@ Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
 " Unmanaged plugin (manually installed and updated)
-Plug '~/my-prototype-plugin'
+"Plug '~/my-prototype-plugin'
+
+"Plug 'jistr/vim-nerdtree-tabs'
+"快速注释，主要是[count]<leader>cc, cu, ci, cy, cs, cA, cm
+Plug 'scrooloose/nerdcommenter'
 
 " Initialize plugin system
 call plug#end()
 
-""===GO
+map <C-e> <plug>NERDTreeTabsToggle<CR>
+map <leader>e :NERDTreeFind<CR>
+nmap <leader>nt :NERDTreeFind<CR>
+let NERDTreeShowBookmarks=1
+let NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$']
+let NERDTreeChDirMode=0
+let NERDTreeQuitOnOpen=1
+let NERDTreeMouseMode=2
+let NERDTreeShowHidden=1
+let NERDTreeKeepTreeInNewTab=1
+let NERDTreeOpenOnNewTab=1
+let g:nerdtree_tabs_open_on_new_tab=1
 
-""=====
-"Plugin 'rking/ag.vim'
-"Plugin 'mileszs/ack.vim'
-""Plugin 'dyng/ctrlsf.vim'
-""nmap     <C-F>f <Plug>CtrlSFPrompt
-""vmap     <C-F>f <Plug>CtrlSFVwordPath
-""vmap     <C-F>F <Plug>CtrlSFVwordExec
-""nmap     <C-F>n <Plug>CtrlSFCwordPath
-""nmap     <C-F>p <Plug>CtrlSFPwordPath
-""nnoremap <C-F>o :CtrlSFOpen<CR>
-""let g:ctrlsf_ackprg = 'ag'
-"""let g:ctrlsf_position = 'bottom'
-"""let g:ctrlsf_position = 'top'
-""let g:ctrlsf_position = 'right'
-"""let g:ctrlsf_winsize = '30%'
-""" or
-"""let g:ctrlsf_winsize = '100'
-""let g:ctrlsf_auto_close = 0
-""let g:ctrlsf_context = '-B 5 -A 3'
+""===GO
 
 ""Plugin 'Shougo/denite.nvim'
 
 
 ""======
-""Plugin 'colorschemer'
-""Plugin 'flazz/vim-colorschemes'
-""Plugin 'octol/vim-cpp-enhanced-highlight'
-""Plugin 'scrooloose/nerdtree'
-""autocmd StdinReadPre * let s:std_in=1
-""autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-""map <C-n> :NERDTreeToggle<CR>
-""autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-""let g:NERDShutUp=1
-""Plugin 'jistr/vim-nerdtree-tabs'
-""map <C-e> <plug>NERDTreeTabsToggle<CR>
-""map <leader>e :NERDTreeFind<CR>
-""nmap <leader>nt :NERDTreeFind<CR>
 
-""let NERDTreeShowBookmarks=1
-""let NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$']
-""let NERDTreeChDirMode=0
-""let NERDTreeQuitOnOpen=1
-""let NERDTreeMouseMode=2
-""let NERDTreeShowHidden=1
-""let NERDTreeKeepTreeInNewTab=1
-""let NERDTreeOpenOnNewTab=1
-""let g:nerdtree_tabs_open_on_new_tab
-"" 快速注释，主要是[count]<leader>cc, cu, ci, cy, cs, cA, cm
-""Plugin 'scrooloose/nerdcommenter'
 
 ""let g:syntastic_cpp_compiler = 'clang++'
 ""let g:syntastic_cpp_compiler = 'cppcheck'
@@ -219,12 +130,75 @@ call plug#end()
 
 ""let g:autoformat_verbosemode=1
 ""Plugin 'Chiel92/vim-autoformat'
+augroup go
+  let g:go_fmt_command = "goimports"
+  let g:go_autodetect_gopath = 1
+  let g:go_list_type = "quickfix"
+
+  let g:go_highlight_types = 1
+  let g:go_highlight_fields = 1
+  let g:go_highlight_functions = 1
+  let g:go_highlight_methods = 1
+  let g:go_highlight_extra_types = 1
+  let g:go_highlight_generate_tags = 1
+
+  " Open :GoDeclsDir with ctrl-g
+  nmap <C-g> :GoDeclsDir<cr>
+  imap <C-g> <esc>:<C-u>GoDeclsDir<cr>
+  autocmd!
+
+  " Show by default 4 spaces for a tab
+  autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=2 shiftwidth=2
+
+  " build_go_files is a custom function that builds or compiles the test file.
+  " It calls :GoBuild if its a Go file, or :GoTestCompile if it's a test file
+  " :GoBuild and :GoTestCompile
+  autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
+
+  " :GoTest
+  autocmd FileType go nmap <leader>t  <Plug>(go-test)
+
+  " :GoRun
+  autocmd FileType go nmap <leader>r  <Plug>(go-run)
+
+  " :GoDoc
+  autocmd FileType go nmap <Leader>d <Plug>(go-doc)
+
+  " :GoCoverageToggle
+  autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
+
+  " :GoInfo
+  autocmd FileType go nmap <Leader>i <Plug>(go-info)
+
+  " :GoMetaLinter
+  autocmd FileType go nmap <Leader>l <Plug>(go-metalinter)
+
+  " :GoDef but opens in a vertical split
+  autocmd FileType go nmap <Leader>v <Plug>(go-def-vertical)
+  " :GoDef but opens in a horizontal split
+  autocmd FileType go nmap <Leader>s <Plug>(go-def-split)
+
+  " :GoAlternate  commands :A, :AV, :AS and :AT
+  autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
+  autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
+  autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
+  autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
+  function! s:build_go_files()
+    let l:file = expand('%')
+    if l:file =~# '^\f\+_test\.go$'
+      call go#cmd#Test(0, 1)
+    elseif l:file =~# '^\f\+\.go$'
+      call go#cmd#Build(0)
+    endif
+  endfunction
+augroup END
+
 let g:formatdef_my_custom_cpp='"astyle --style=google --indent=spaces=2 --attach-namespaces --attach-classes --indent-modifiers --indent-switches --indent-cases --pad-oper --pad-header --align-pointer=type --align-reference=type --convert-tabs --max-code-length=80 --break-after-logical --lineend=linux"'
 let g:formatters_cpp = ['my_custom_cpp']
 noremap <F6> :Autoformat<CR><CR>
+noremap <C-h> :bprev!<CR>
+noremap <C-l> :bnext!<CR>
 
-""call vundle#end()
-""filetype plugin indent on
 
 source ~/.vim/darrenhp_vimrc
 
