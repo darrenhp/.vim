@@ -1,4 +1,4 @@
-﻿#include<bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
 
 typedef long long i64;
@@ -22,9 +22,8 @@ const double PI = acos(-1);
  * decltype // deprecated
  */
 
-
 int TestNum;
 int main(){
   ios_base::sync_with_stdio(false); 
-
 }
+
