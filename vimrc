@@ -6,7 +6,8 @@ call plug#begin('~/.vim/plugged')
 " Make sure you use single quotes
 
 Plug 'ludovicchabant/vim-gutentags'
-
+"Plug 'takac/vim-hardtime'
+let g:hardtime_default_on = 1
 Plug 'junegunn/vim-easy-align'
 Plug 'skywind3000/quickmenu.vim'
 Plug 'vim-scripts/colorschemer'
@@ -15,10 +16,10 @@ Plug 'rking/ag.vim'
 Plug 'xuhdev/singleCompile'
 "
 "
-"Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
 "Plug 'neomake/neomake'
 
-"Plug 'w0rp/ale'
+Plug 'w0rp/ale'
 "Plug 'kien/ctrlp.vim'
 "let g:ctrlp_map = '<c-p>'
 "let g:ctrlp_cmd = 'CtrlP'
@@ -42,7 +43,7 @@ Plug 'bling/vim-bufferline'
 ""Plug 'https://github.com/junegunn/vim-github-dashboard.git'
 
 " Multiple Plug commands can be written in a single line using | separators
-Plug 'SirVer/ultisnips'
+":wqa:wqaPlug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
 " On-demand loading
@@ -50,6 +51,7 @@ Plug 'honza/vim-snippets'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 Plug 'fatih/vim-go', { 'for': 'go' }
+
 
 
 
@@ -197,6 +199,9 @@ augroup go
   let g:go_fmt_command = "goimports"
   let g:go_autodetect_gopath = 1
   let g:go_list_type = "quickfix"
+  let g:go_def_mode='gopls'
+  let g:go_info_mode='gopls'
+  let g:go_def_mapping_enabled = 0
 
   let g:go_highlight_types = 1
   let g:go_highlight_fields = 1
@@ -263,8 +268,75 @@ noremap <C-h> :bprev!<CR>
 noremap <C-l> :bnext!<CR>
 
 
-call SingleCompile#SetCompilerTemplate('cpp', 'g++', 'GNU C++ Compiler', 'g++-8', '-std=c++11 -g -Weffc++ -Wshadow -Werror -Wall -Wextra -o $(FILE_TITLE)$', '$(FILE_EXEC)$')
-call SingleCompile#ChooseCompiler('cpp', 'g++')
+"call SingleCompile#SetCompilerTemplate('cpp', 'g++', 'GNU C++ Compiler', 'g++-8', '-std=c++11 -g -Weffc++ -Wshadow -Werror -Wall -Wextra -o $(FILE_TITLE)$', '$(FILE_EXEC)$')
+call SingleCompile#SetCompilerTemplate('cpp', 'g++', 'GNU C++ Compiler', 'g++-9', '-std=c++11 -g -Weffc++ -Wshadow -Werror -Wall -Wextra -o a.out', './a.out ')
+"call SingleCompile#ChooseCompiler('cpp', 'g++')
 nmap <F5> :w! <CR> :SCCompileRun<CR>
+"set macmeta
 source ~/.vim/darrenhp_vimrc
+" -------------------------------------------------------------------------------------------------
+" coc.nvim default settings
+" -------------------------------------------------------------------------------------------------
 
+" if hidden is not set, TextEdit might fail.
+set hidden
+" Better display for messages
+set cmdheight=2
+" Smaller updatetime for CursorHold & CursorHoldI
+set updatetime=300
+" don't give |ins-completion-menu| messages.
+set shortmess+=c
+" always show signcolumns
+set signcolumn=yes
+
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use `[c` and `]c` to navigate diagnostics
+nmap <silent> [c <Plug>(coc-diagnostic-prev)
+nmap <silent> ]c <Plug>(coc-diagnostic-next)
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use U to show documentation in preview window
+nnoremap <silent> U :call <SID>show_documentation()<CR>
+
+" Remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
+
+" Remap for format selected region
+vmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+" Show all diagnostics
+nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+" Manage extensions
+nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+" Show commands
+nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document
+nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols
+nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+" Resume latest coc list
+nnoremap <silent> <space>p  :<C-u>CocListResume<CR>

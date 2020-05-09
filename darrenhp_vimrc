@@ -14,7 +14,7 @@ nmap <leader>dd :edit $HOME/.vim/darrenhp_vimrc<CR>
 noremap <F11> :YRShow<CR>
 noremap <F3> :set nonumber! nonumber?<CR>
 noremap <F4> :set hlsearch! hlsearch?<CR>
-noremap <F9> :!~/oj_submiter/sb.py % <CR>
+noremap <F9> :!~/github.com/darrenhp/oj_submiters/sb.py % <CR>
 noremap <F12> :!pbcopy < %<CR><CR>
 "
 "保存.vimrc文件后会自动调用新的.vimrc
